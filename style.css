@@ -1,0 +1,36 @@
+/* * ==========================================
+ * DDCS LAB WEBSITE STYLES
+ * ==========================================
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+body { font-family: 'Inter', sans-serif; }
+
+/* Animations */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+.animate-slide-up { animation: slideUp 0.6s ease-out forwards; opacity: 0; }
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+
+/* Tabs */
+.tab-content { display: none; opacity: 0; transition: opacity 0.3s ease-in-out; }
+.tab-content.active { display: block; opacity: 1; }
+
+/* Navigation */
+nav { color: #0f172a; } 
+.nav-scrolled { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #e2e8f0; padding-top: 0.75rem !important; padding-bottom: 0.75rem !important; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+.nav-scrolled .nav-link { color: #64748b; } 
+.nav-scrolled .nav-link:hover { color: #0f172a; } 
+.nav-scrolled .nav-link.active-nav { color: #2563eb !important; border-bottom-color: #2563eb !important; }
+
+/* UI */
+.filter-btn.active { background-color: #2563eb; color: white; border-color: #2563eb; }
+.pub-item:hover .pub-links { opacity: 1; }
+.home-news-scroll::-webkit-scrollbar { width: 4px; }
+.home-news-scroll::-webkit-scrollbar-track { background: transparent; }
+.home-news-scroll::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 4px; }
+.hidden-item { display: none !important; }
