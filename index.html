@@ -29,6 +29,7 @@
                 <button onclick="switchTab('people')" class="nav-link text-sm font-bold uppercase tracking-wider border-b-2 border-transparent hover:text-blue-600 transition-all" data-target="people">People</button>
                 <button onclick="switchTab('publications')" class="nav-link text-sm font-bold uppercase tracking-wider border-b-2 border-transparent hover:text-blue-600 transition-all" data-target="publications">Publications</button>
                 <button onclick="switchTab('news')" class="nav-link text-sm font-bold uppercase tracking-wider border-b-2 border-transparent hover:text-blue-600 transition-all" data-target="news">News</button>
+                <button onclick="switchTab('jobs')" class="nav-link text-sm font-bold uppercase tracking-wider border-b-2 border-transparent hover:text-blue-600 transition-all" data-target="jobs">Available Projects</button>
                 <button onclick="switchTab('gallery')" class="nav-link text-sm font-bold uppercase tracking-wider border-b-2 border-transparent hover:text-blue-600 transition-all" data-target="gallery">Gallery</button>
             </div>
             <button onclick="toggleMobileMenu()" class="md:hidden focus:outline-none"><i data-lucide="menu"></i></button>
@@ -39,6 +40,7 @@
                 <button onclick="switchTab('research'); toggleMobileMenu()" class="text-left font-bold">Research</button>
                 <button onclick="switchTab('publications'); toggleMobileMenu()" class="text-left font-bold">Publications</button>
                 <button onclick="switchTab('news'); toggleMobileMenu()" class="text-left font-bold">News</button>
+                <button onclick="switchTab('jobs'); toggleMobileMenu()" class="text-left font-bold">Jobs</button>
             </div>
         </div>
     </nav>
@@ -135,20 +137,57 @@
         <section id="news" class="tab-content pt-32 pb-20 bg-slate-50 min-h-screen">
              <div class="max-w-5xl mx-auto px-6">
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
-                    <div class="border-l-4 border-blue-600 pl-6"><h2 class="text-4xl font-bold text-slate-900 mb-2">News & Events</h2><p class="text-lg text-slate-500">Latest updates from the lab</p></div>
-                    <div class="flex space-x-2 overflow-x-auto pb-2">
-                        <button onclick="filterNews('all')" class="filter-btn active px-4 py-2 rounded-full border border-slate-200 bg-white text-sm font-semibold hover:bg-slate-100 transition-colors">All</button>
-                        <button onclick="filterNews('hiring')" class="filter-btn px-4 py-2 rounded-full border border-slate-200 bg-white text-sm font-semibold hover:bg-slate-100 transition-colors">Hiring</button>
-                        <button onclick="filterNews('publication')" class="filter-btn px-4 py-2 rounded-full border border-slate-200 bg-white text-sm font-semibold hover:bg-slate-100 transition-colors">Publications</button>
-                        <button onclick="filterNews('event')" class="filter-btn px-4 py-2 rounded-full border border-slate-200 bg-white text-sm font-semibold hover:bg-slate-100 transition-colors">Events</button>
+                    <div class="border-l-4 border-blue-600 pl-6">
+                        <h2 class="text-4xl font-bold text-slate-900 mb-2">News & Events</h2>
+                        <p class="text-lg text-slate-500">Browse news by year. Click a title to open the full details.</p>
                     </div>
+                    <p class="text-sm text-slate-500 md:text-right">Year groups can be expanded or collapsed to keep the archive compact.</p>
                 </div>
-                <div id="news-container" class="grid md:grid-cols-2 gap-6"></div>
-                <button id="news-show-more" onclick="showAllNews()" class="w-full py-4 mt-8 text-sm font-bold text-slate-500 bg-white border border-slate-200 rounded-xl hover:text-blue-600 hover:border-blue-600 transition-all flex items-center justify-center gap-2">Show All News <i data-lucide="chevron-down" class="w-4 h-4"></i></button>
+                <div id="news-container" class="space-y-8"></div>
             </div>
         </section>
 
-         <!-- 6. GALLERY -->
+        <!-- 6. JOBS -->
+        <section id="jobs" class="tab-content pt-32 pb-20 bg-white min-h-screen">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="mb-14 border-l-4 border-blue-600 pl-6 max-w-4xl">
+                    <h2 class="text-4xl font-bold text-slate-900 mb-3">Thesis Projects & Internships</h2>
+                    <p class="text-lg text-slate-500 mb-3">Mainly thesis opportunities for students interested in machine learning, wireless/optical communications, and joint sensing.</p>
+                    <p class="text-slate-600 leading-relaxed">
+                        This page highlights currently available projects and selected past projects. If you do not see a perfect match, you are still welcome to contact the lab to discuss a custom thesis idea.
+                    </p>
+                </div>
+
+                <div class="mb-12">
+                    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-900">Available Projects</h3>
+                            <p class="text-slate-500">Only projects for the current calendar year are shown here. Click a title to open the full project details.</p>
+                        </div>
+                    </div>
+                    <div id="available-thesis-container" class="space-y-8"></div>
+                </div>
+
+                <div class="rounded-3xl border border-dashed border-slate-300 bg-slate-50 p-6 md:p-8 mb-12">
+                    <p class="font-semibold text-slate-800 mb-2">Do you have your own idea?</p>
+                    <p class="text-sm leading-relaxed text-slate-600">
+                        We are open to discussing custom thesis directions if your background overlaps with communication systems, machine learning, signal processing, photonics, or sensing.
+                    </p>
+                </div>
+
+                <div>
+                    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-900">Past Projects</h3>
+                            <p class="text-slate-500">Examples of previously supervised thesis work, grouped by year.</p>
+                        </div>
+                    </div>
+                    <div id="past-thesis-container" class="space-y-10"></div>
+                </div>
+            </div>
+        </section>
+
+         <!-- 7. GALLERY -->
         <section id="gallery" class="tab-content pt-32 pb-20 bg-white min-h-screen">
             <div class="max-w-6xl mx-auto px-6">
                  <div class="mb-16 border-l-4 border-blue-600 pl-6"><h2 class="text-4xl font-bold text-slate-900 mb-2">Gallery</h2><p class="text-lg text-slate-500">Life at the Lab</p></div>
@@ -195,57 +234,66 @@
     </div>
 
     <!-- NEWS MODAL -->
-    <div
-        id="news-modal"
-        class="fixed inset-0 z-[100] bg-slate-900/95 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-300 overflow-y-auto"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="news-modal-title"
-        onclick="handleNewsModalBackdrop(event)"
-    >
+    <div id="news-modal" class="fixed inset-0 z-[100] bg-slate-900/95 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-300 overflow-y-auto" onclick="handleNewsModalBackdrop(event)">
         <div class="bg-white rounded-3xl max-w-3xl w-full relative overflow-hidden shadow-2xl animate-fade-in my-8">
-            <button
-                class="absolute top-4 right-4 z-10 bg-slate-900/10 hover:bg-slate-900/20 text-slate-700 rounded-full p-2 transition-colors"
-                onclick="closeNewsModal()"
-            >
-                <i data-lucide="x" class="w-6 h-6"></i>
-            </button>
-
+            <button class="absolute top-4 right-4 z-10 bg-slate-900/10 hover:bg-slate-900/20 text-slate-700 rounded-full p-2 transition-colors" onclick="closeNewsModal()"><i data-lucide="x" class="w-6 h-6"></i></button>
             <div class="p-8 md:p-10 border-b border-slate-100 bg-gradient-to-br from-white via-slate-50 to-blue-50">
                 <div class="flex flex-wrap items-center gap-3 mb-4">
                     <span id="news-modal-date" class="text-xs font-bold text-slate-400 uppercase tracking-wide"></span>
                     <span id="news-modal-type" class="text-[11px] font-bold px-3 py-1 rounded-full uppercase bg-slate-100 text-slate-700"></span>
                 </div>
                 <h2 id="news-modal-title" class="text-3xl md:text-4xl font-bold text-slate-900 leading-tight"></h2>
-                <p id="news-modal-desc" class="mt-4 text-base md:text-lg text-slate-600 leading-relaxed hidden"></p>
             </div>
-
             <div class="p-8 md:p-10">
                 <div id="news-modal-body" class="space-y-5"></div>
-
                 <div class="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                    <a
-                        id="news-modal-link"
-                        href="#"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="hidden inline-flex items-center justify-center gap-2 px-5 py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl transition-colors"
-                    >
-                        <span id="news-modal-link-label">Visit Source</span>
+                    <a id="news-modal-link" href="#" target="_blank" rel="noopener noreferrer" class="hidden inline-flex items-center justify-center gap-2 px-5 py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl transition-colors">
+                        <span id="news-modal-link-label">View Source</span>
                         <i data-lucide="external-link" class="w-4 h-4"></i>
                     </a>
-
-                    <button
-                        onclick="closeNewsModal()"
-                        class="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-colors"
-                    >
-                        Close
-                    </button>
+                    <button onclick="closeNewsModal()" class="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-colors">Close</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- THESIS MODAL -->
+    <div id="thesis-modal" class="fixed inset-0 z-[100] bg-slate-900/95 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-300 overflow-y-auto" onclick="handleThesisModalBackdrop(event)">
+        <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[85vh] relative overflow-hidden shadow-2xl animate-fade-in my-8 flex flex-col">
+            <button class="absolute top-4 right-4 z-10 bg-slate-900/10 hover:bg-slate-900/20 text-slate-700 rounded-full p-2 transition-colors" onclick="closeThesisModal()"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <div class="p-8 md:p-10 border-b border-slate-100 bg-gradient-to-br from-white via-slate-50 to-emerald-50">
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                    <span id="thesis-modal-type" class="text-[11px] font-bold px-3 py-1 rounded-full uppercase bg-blue-100 text-blue-700"></span>
+                    <span id="thesis-modal-year" class="text-[11px] font-bold px-3 py-1 rounded-full uppercase bg-emerald-100 text-emerald-700"></span>
+                </div>
+                <h2 id="thesis-modal-title" class="text-3xl md:text-4xl font-bold text-slate-900 leading-tight"></h2>
+                <div class="flex flex-wrap gap-4 text-sm text-slate-500 mt-5">
+                    <div class="inline-flex items-center gap-2"><i data-lucide="calendar-range" class="w-4 h-4"></i><span id="thesis-modal-term"></span></div>
+                    <div class="inline-flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4"></i><span id="thesis-modal-location"></span></div>
+                </div>
+            </div>
+            <div class="p-8 md:p-10 overflow-y-auto">
+                <div class="mb-8">
+                    <h3 class="text-sm font-bold uppercase tracking-wide text-slate-400 mb-3">Description</h3>
+                    <p id="thesis-modal-description" class="text-slate-700 leading-relaxed"></p>
+                </div>
+                <div class="grid gap-8 md:grid-cols-2">
+                    <div>
+                        <h3 class="text-sm font-bold uppercase tracking-wide text-slate-400 mb-3">Supervisors</h3>
+                        <div id="thesis-modal-supervisors" class="space-y-3"></div>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-bold uppercase tracking-wide text-slate-400 mb-3">References</h3>
+                        <div id="thesis-modal-references" class="space-y-3"></div>
+                    </div>
+                </div>
+                <div id="thesis-modal-contact" class="mt-8"></div>
+                <div class="mt-8 pt-6 border-t border-slate-100 flex justify-end">
+                    <button onclick="closeThesisModal()" class="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-colors">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="data.js"></script>
     <script src="main.js"></script>

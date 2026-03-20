@@ -232,198 +232,532 @@ function renderAlumni() {
     alumniWrapper.innerHTML = htmlContent;
 }
 
-    // D. News & Home News
-    let currentNewsFilter = 'all';
-    let showAllNewsFlag = false;
+// D. News & Home News
+const expandedNewsYears = new Set();
+const expandedAvailableProjectYears = new Set();
+const expandedPastProjectYears = new Set();
+let hasInitializedNewsYears = false;
+let hasInitializedAvailableProjectYears = false;
 
-    function getNewsTypeColorClass(type) {
-        if (type === 'hiring') return 'bg-amber-100 text-amber-700';
-        if (type === 'publication') return 'bg-green-100 text-green-700';
-        if (type === 'event') return 'bg-blue-100 text-blue-700';
-        return 'bg-slate-100 text-slate-700';
-    }
+function extractYearLabel(rawValue, fallbackLabel) {
+    if (!rawValue) return fallbackLabel;
 
-    function getNewsTypeLabel(type) {
-        return type && type.trim() ? type : 'news';
-    }
+    const value = String(rawValue).trim();
+    const match = value.match(/\b(19|20)\d{2}\b/);
 
-    function getNewsBody(news) {
-        if (Array.isArray(news.body) && news.body.length > 0) return news.body;
-        if (typeof news.body === 'string' && news.body.trim()) return [news.body.trim()];
-        if (typeof news.desc === 'string' && news.desc.trim()) return [news.desc.trim()];
-        return ['More details will be updated soon.'];
-    }
+    if (match) return match[0];
+    return value || fallbackLabel;
+}
 
-    function getNewsLead(news) {
-        const hasBody =
-            (Array.isArray(news.body) && news.body.length > 0) ||
-            (typeof news.body === 'string' && news.body.trim());
+function sortYearLabelsDesc(labels) {
+    return [...labels].sort((left, right) => {
+        const leftNumber = Number.parseInt(left, 10);
+        const rightNumber = Number.parseInt(right, 10);
+        const leftIsNumber = Number.isFinite(leftNumber);
+        const rightIsNumber = Number.isFinite(rightNumber);
 
-        if (!hasBody) return '';
-        return news.desc || '';
-    }
+        if (leftIsNumber && rightIsNumber) return rightNumber - leftNumber;
+        if (leftIsNumber) return -1;
+        if (rightIsNumber) return 1;
+        return String(right).localeCompare(String(left));
+    });
+}
 
-    function renderNewsModalBody(news) {
-        const body = document.getElementById('news-modal-body');
-        if (!body) return;
+function groupItemsByYear(items, getYearLabel) {
+    const groupedMap = items.reduce((accumulator, item) => {
+        const year = getYearLabel(item);
+        if (!accumulator[year]) accumulator[year] = [];
+        accumulator[year].push(item);
+        return accumulator;
+    }, {});
 
-        body.innerHTML = '';
+    return sortYearLabelsDesc(Object.keys(groupedMap)).map(year => ({
+        year,
+        items: groupedMap[year]
+    }));
+}
 
-        getNewsBody(news).forEach(paragraph => {
-            const p = document.createElement('p');
-            p.className = 'text-base leading-8 text-slate-700';
-            p.textContent = paragraph;
-            body.appendChild(p);
+function ensureDefaultExpandedYear(expandedSet, groupedItems) {
+    if (expandedSet.size > 0 || groupedItems.length === 0) return;
+    expandedSet.add(groupedItems[0].year);
+}
+
+function pruneExpandedYears(expandedSet, groupedItems) {
+    const validYears = new Set(groupedItems.map(group => group.year));
+    [...expandedSet].forEach(year => {
+        if (!validYears.has(year)) expandedSet.delete(year);
+    });
+}
+
+function createYearAccordionSection(year, items, isOpen, toggleHandler, renderItem, summaryLabel) {
+    const section = document.createElement('section');
+    section.className = 'rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm';
+
+    const header = document.createElement('button');
+    header.type = 'button';
+    header.className = 'w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-slate-50 transition-colors';
+    header.onclick = () => toggleHandler(year);
+    header.innerHTML = `
+        <div class="flex items-center gap-3">
+            <h3 class="text-2xl font-bold text-slate-900">${year}</h3>
+            <span class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide bg-slate-100 text-slate-500">${items.length} ${summaryLabel}</span>
+        </div>
+        <i data-lucide="${isOpen ? 'chevron-up' : 'chevron-down'}" class="w-5 h-5 text-slate-400"></i>
+    `;
+
+    const content = document.createElement('div');
+    content.className = isOpen ? 'border-t border-slate-100 divide-y divide-slate-100' : 'hidden border-t border-slate-100 divide-y divide-slate-100';
+    items.forEach(item => content.appendChild(renderItem(item)));
+
+    section.appendChild(header);
+    section.appendChild(content);
+    return section;
+}
+
+function getNewsYear(news) {
+    return extractYearLabel(news.year || news.date, 'Archived');
+}
+
+function getNewsTypeLabel(type) {
+    return type && type.trim() ? type : 'news';
+}
+
+function getNewsTypeClass(type) {
+    if (type === 'hiring') return 'bg-amber-100 text-amber-700';
+    if (type === 'publication') return 'bg-green-100 text-green-700';
+    if (type === 'event') return 'bg-blue-100 text-blue-700';
+    return 'bg-slate-100 text-slate-700';
+}
+
+function getNewsModalParagraphs(news) {
+    const paragraphs = [];
+
+    if (news.desc) paragraphs.push(news.desc);
+
+    if (Array.isArray(news.body)) {
+        news.body.forEach(paragraph => {
+            if (paragraph && paragraph !== news.desc) paragraphs.push(paragraph);
         });
+    } else if (typeof news.body === 'string' && news.body.trim() && news.body !== news.desc) {
+        paragraphs.push(news.body.trim());
     }
 
-    function openNewsModal(news) {
-        const modal = document.getElementById('news-modal');
-        const title = document.getElementById('news-modal-title');
-        const date = document.getElementById('news-modal-date');
-        const type = document.getElementById('news-modal-type');
-        const desc = document.getElementById('news-modal-desc');
-        const link = document.getElementById('news-modal-link');
-        const linkLabel = document.getElementById('news-modal-link-label');
-
-        if (!modal || !news) return;
-
-        title.textContent = news.title || '';
-        date.textContent = news.date || '';
-        type.textContent = getNewsTypeLabel(news.type);
-        type.className = `text-[11px] font-bold px-3 py-1 rounded-full uppercase ${getNewsTypeColorClass(news.type)}`;
-
-        const leadText = getNewsLead(news);
-        if (leadText) {
-            desc.textContent = leadText;
-            desc.classList.remove('hidden');
-        } else {
-            desc.textContent = '';
-            desc.classList.add('hidden');
-        }
-
-        renderNewsModalBody(news);
-
-        if (news.link) {
-            link.href = news.link;
-            link.classList.remove('hidden');
-            linkLabel.textContent = news.sourceLabel || 'Visit Source';
-        } else {
-            link.removeAttribute('href');
-            link.classList.add('hidden');
-        }
-
-        modal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-
-        if (typeof lucide !== 'undefined') lucide.createIcons();
+    if (paragraphs.length === 0) {
+        paragraphs.push('More details will be updated soon.');
     }
 
-    function closeNewsModal() {
-        const modal = document.getElementById('news-modal');
-        if (!modal) return;
+    return paragraphs;
+}
 
-        modal.classList.add('hidden');
-        document.body.style.overflow = '';
+function openNewsModal(news) {
+    const modal = document.getElementById('news-modal');
+    const title = document.getElementById('news-modal-title');
+    const date = document.getElementById('news-modal-date');
+    const type = document.getElementById('news-modal-type');
+    const body = document.getElementById('news-modal-body');
+    const link = document.getElementById('news-modal-link');
+    const linkLabel = document.getElementById('news-modal-link-label');
+
+    if (!modal || !news) return;
+
+    title.textContent = news.title || '';
+    date.textContent = news.date || getNewsYear(news);
+    type.textContent = getNewsTypeLabel(news.type);
+    type.className = `text-[11px] font-bold px-3 py-1 rounded-full uppercase ${getNewsTypeClass(news.type)}`;
+
+    body.innerHTML = '';
+    getNewsModalParagraphs(news).forEach(paragraph => {
+        const item = document.createElement('p');
+        item.className = 'text-base leading-8 text-slate-700';
+        item.textContent = paragraph;
+        body.appendChild(item);
+    });
+
+    if (news.link) {
+        link.href = news.link;
+        link.classList.remove('hidden');
+        linkLabel.textContent = news.sourceLabel || 'View Source';
+    } else {
+        link.removeAttribute('href');
+        link.classList.add('hidden');
     }
 
-    function handleNewsModalBackdrop(event) {
-        if (event.target === event.currentTarget) {
-            closeNewsModal();
-        }
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+}
+
+function closeNewsModal() {
+    const modal = document.getElementById('news-modal');
+    if (!modal) return;
+
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+}
+
+function handleNewsModalBackdrop(event) {
+    if (event.target === event.currentTarget) {
+        closeNewsModal();
+    }
+}
+
+function toggleNewsYear(year) {
+    if (expandedNewsYears.has(year)) expandedNewsYears.delete(year);
+    else expandedNewsYears.add(year);
+    renderNews();
+}
+
+function createNewsArchiveItem(news) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'w-full flex items-start justify-between gap-4 px-6 py-4 text-left hover:bg-slate-50 transition-colors group';
+    button.onclick = () => openNewsModal(news);
+    button.innerHTML = `
+        <div class="min-w-0">
+            <p class="text-xs font-bold text-slate-400 uppercase mb-2">${news.date || getNewsYear(news)}</p>
+            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">${news.title || 'News title'}</h4>
+        </div>
+        <span class="shrink-0 text-[10px] font-bold px-2 py-1 rounded-full uppercase ${getNewsTypeClass(news.type)}">${getNewsTypeLabel(news.type)}</span>
+    `;
+    return button;
+}
+
+function renderHomeNews() {
+    const container = document.getElementById('home-news-list');
+    if (!container || typeof newsData === 'undefined') return;
+
+    container.innerHTML = '';
+
+    newsData.slice(0, 10).forEach(news => {
+        const el = document.createElement('div');
+        el.className = 'p-4 hover:bg-slate-50 transition-colors cursor-pointer group border-l-2 border-transparent hover:border-blue-500';
+        el.onclick = () => openNewsModal(news);
+        el.innerHTML = `
+            <div class="flex justify-between items-baseline mb-1 gap-3">
+                 <span class="text-xs font-bold text-slate-400 uppercase">${news.date || getNewsYear(news)}</span>
+                 <i data-lucide="arrow-right" class="w-3 h-3 text-slate-300 group-hover:text-blue-500 transition-colors"></i>
+            </div>
+            <h4 class="text-sm font-bold text-slate-800 group-hover:text-blue-600 line-clamp-2 transition-colors">${news.title || 'News title'}</h4>
+        `;
+        container.appendChild(el);
+    });
+
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+}
+
+function renderNews() {
+    const container = document.getElementById('news-container');
+    if (!container || typeof newsData === 'undefined') return;
+
+    container.innerHTML = '';
+
+    const groupedNews = groupItemsByYear(newsData, getNewsYear);
+    pruneExpandedYears(expandedNewsYears, groupedNews);
+    if (!hasInitializedNewsYears) {
+        ensureDefaultExpandedYear(expandedNewsYears, groupedNews);
+        hasInitializedNewsYears = true;
     }
 
-    function renderHomeNews() {
-        const container = document.getElementById('home-news-list');
-        if (!container || typeof newsData === 'undefined') return;
+    groupedNews.forEach(group => {
+        container.appendChild(
+            createYearAccordionSection(
+                group.year,
+                group.items,
+                expandedNewsYears.has(group.year),
+                toggleNewsYear,
+                createNewsArchiveItem,
+                'items'
+            )
+        );
+    });
 
-        container.innerHTML = '';
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+}
 
-        newsData.slice(0, 10).forEach(news => {
-            const el = document.createElement('div');
-            el.className = 'p-4 hover:bg-slate-50 transition-colors cursor-pointer group border-l-2 border-transparent hover:border-blue-500';
-            el.onclick = () => openNewsModal(news);
+// E. Jobs & Thesis Projects
+function renderSupervisorList(supervisors) {
+    if (!Array.isArray(supervisors) || supervisors.length === 0) {
+        return `<p class="text-sm text-slate-500">Supervisor information will be updated soon.</p>`;
+    }
 
-            el.innerHTML = `
-                <div class="flex justify-between items-baseline mb-1 gap-3">
-                    <span class="text-xs font-bold text-slate-400 uppercase">${news.date || ''}</span>
-                    <i data-lucide="arrow-right" class="w-3 h-3 text-slate-300 group-hover:text-blue-500 transition-colors"></i>
-                </div>
-                <h4 class="text-sm font-bold text-slate-800 group-hover:text-blue-600 line-clamp-2 transition-colors">${news.title || ''}</h4>
+    return supervisors.map(supervisor => `
+        <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
+            <p class="font-semibold text-slate-900">${supervisor.name || 'Supervisor name'}</p>
+            <p class="text-sm text-slate-500 mb-2">${supervisor.role || 'Role to be updated'}</p>
+            ${supervisor.email ? `<a href="mailto:${supervisor.email}" class="inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 break-all"><i data-lucide="mail" class="w-4 h-4"></i><span>${supervisor.email}</span></a>` : ''}
+        </div>
+    `).join('');
+}
+
+function renderReferenceList(references) {
+    if (!Array.isArray(references) || references.length === 0) {
+        return `<p class="text-sm text-slate-500">References will be shared during the discussion.</p>`;
+    }
+
+    return references.map(reference => {
+        if (reference.url) {
+            return `
+                <a href="${reference.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-start gap-2 text-sm text-blue-600 hover:text-blue-800">
+                    <i data-lucide="arrow-up-right" class="w-4 h-4 mt-0.5 shrink-0"></i>
+                    <span>${reference.label}</span>
+                </a>
             `;
-
-            container.appendChild(el);
-        });
-
-        if (typeof lucide !== 'undefined') lucide.createIcons();
-    }
-
-    function renderNews() {
-        const container = document.getElementById('news-container');
-        if (!container || typeof newsData === 'undefined') return;
-
-        container.innerHTML = '';
-
-        const filtered = newsData.filter(news => currentNewsFilter === 'all' || news.type === currentNewsFilter);
-        const visibleNews = filtered.slice(0, showAllNewsFlag ? filtered.length : 6);
-
-        visibleNews.forEach(news => {
-            const el = document.createElement('div');
-            const typeColor = getNewsTypeColorClass(news.type);
-
-            el.className = 'bg-white p-5 rounded-xl border border-slate-100 hover:shadow-md transition-all flex flex-col gap-3 group cursor-pointer';
-            el.onclick = () => openNewsModal(news);
-
-            el.innerHTML = `
-                <div class="flex justify-between items-center gap-3">
-                    <span class="text-xs font-bold text-slate-400 uppercase">${news.date || ''}</span>
-                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase ${typeColor}">${getNewsTypeLabel(news.type)}</span>
-                </div>
-                <h3 class="font-bold text-slate-800 text-lg group-hover:text-blue-600 transition-colors">${news.title || ''}</h3>
-                <p class="text-slate-500 text-sm line-clamp-2">${news.desc || ''}</p>
-                <div class="pt-2 text-sm font-semibold text-blue-600 flex items-center gap-2">
-                    Read details <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </div>
-            `;
-
-            container.appendChild(el);
-        });
-
-        const btn = document.getElementById('news-show-more');
-        if (btn) {
-            if (filtered.length <= 6) {
-                btn.style.display = 'none';
-            } else {
-                btn.style.display = 'flex';
-                btn.innerHTML = showAllNewsFlag
-                    ? 'Show Less'
-                    : `Show All News (${filtered.length})`;
-            }
         }
 
-        if (typeof lucide !== 'undefined') lucide.createIcons();
+        return `
+            <div class="inline-flex items-start gap-2 text-sm text-slate-600">
+                <i data-lucide="file-text" class="w-4 h-4 mt-0.5 shrink-0"></i>
+                <span>${reference.label}</span>
+            </div>
+        `;
+    }).join('');
+}
+
+function getSupervisorNames(supervisors) {
+    if (!Array.isArray(supervisors) || supervisors.length === 0) {
+        return 'To be updated';
     }
 
-    function filterNews(type) {
-        currentNewsFilter = type;
-        showAllNewsFlag = false;
+    return supervisors
+        .map(supervisor => supervisor.name)
+        .filter(Boolean)
+        .join(', ');
+}
 
-        document.querySelectorAll('#news .filter-btn').forEach(button => {
-            button.classList.toggle(
-                'active',
-                button.textContent.toLowerCase().includes(type) || (type === 'all' && button.textContent === 'All')
-            );
+function getAvailableProjectYear(project) {
+    return extractYearLabel(project.year || project.term, 'Upcoming');
+}
+
+function getCurrentCalendarYear() {
+    return String(new Date().getFullYear());
+}
+
+function getPastProjectYear(project) {
+    return extractYearLabel(project.year, 'Archived');
+}
+
+function openThesisModal(project) {
+    const modal = document.getElementById('thesis-modal');
+    if (!modal || !project) return;
+
+    document.getElementById('thesis-modal-type').textContent = project.type || 'Thesis Project';
+    document.getElementById('thesis-modal-year').textContent = getAvailableProjectYear(project);
+    document.getElementById('thesis-modal-title').textContent = project.title || 'Project title';
+    document.getElementById('thesis-modal-term').textContent = project.term || 'Start date to be discussed';
+    document.getElementById('thesis-modal-location').textContent = project.location || 'Location to be updated';
+    document.getElementById('thesis-modal-description').textContent = project.description || 'Project description will be updated soon.';
+    document.getElementById('thesis-modal-supervisors').innerHTML = renderSupervisorList(project.supervisors);
+    document.getElementById('thesis-modal-references').innerHTML = renderReferenceList(project.references);
+
+    const contactContainer = document.getElementById('thesis-modal-contact');
+    if (project.contact?.email) {
+        contactContainer.innerHTML = `
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-2">Contact</p>
+                <p class="font-semibold text-slate-900">${project.contact.name || 'Contact person'}</p>
+                <a href="mailto:${project.contact.email}" class="inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 mt-2 break-all">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                    <span>${project.contact.email}</span>
+                </a>
+                ${project.contact.note ? `<p class="text-sm text-slate-600 leading-relaxed mt-3">${project.contact.note}</p>` : ''}
+            </div>
+        `;
+    } else {
+        contactContainer.innerHTML = '';
+    }
+
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+}
+
+function closeThesisModal() {
+    const modal = document.getElementById('thesis-modal');
+    if (!modal) return;
+
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+}
+
+function handleThesisModalBackdrop(event) {
+    if (event.target === event.currentTarget) {
+        closeThesisModal();
+    }
+}
+
+function createAvailableThesisProjectListItem(project) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'w-full flex items-start justify-between gap-4 px-6 py-4 text-left hover:bg-slate-50 transition-colors group';
+    button.onclick = () => openThesisModal(project);
+    button.innerHTML = `
+        <div class="min-w-0">
+            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">${project.title || 'Project title'}</h4>
+            <div class="flex flex-wrap gap-2 mt-3">
+                <span class="text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide bg-blue-100 text-blue-700">${project.type || 'Thesis Project'}</span>
+                <span class="text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide bg-emerald-100 text-emerald-700">${project.status || 'available'}</span>
+            </div>
+        </div>
+        <i data-lucide="arrow-right" class="w-4 h-4 text-slate-300 group-hover:text-blue-500 transition-colors shrink-0 mt-1"></i>
+    `;
+    return button;
+}
+
+function toggleAvailableProjectYear(year) {
+    if (expandedAvailableProjectYears.has(year)) expandedAvailableProjectYears.delete(year);
+    else expandedAvailableProjectYears.add(year);
+    renderThesisProjects();
+}
+
+function togglePastProjectYear(year) {
+    if (expandedPastProjectYears.has(year)) expandedPastProjectYears.delete(year);
+    else expandedPastProjectYears.add(year);
+    renderThesisProjects();
+}
+
+function renderAvailableThesisProjects(containerId, items, emptyMessage) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    container.innerHTML = '';
+    const currentYear = getCurrentCalendarYear();
+    const currentYearItems = Array.isArray(items)
+        ? items.filter(project => getAvailableProjectYear(project) === currentYear)
+        : [];
+
+    if (currentYearItems.length === 0) {
+        container.innerHTML = `
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-slate-500">
+                No available thesis projects are listed for ${currentYear} right now.
+            </div>
+        `;
+        return;
+    }
+
+    const groupedProjects = groupItemsByYear(currentYearItems, getAvailableProjectYear);
+    pruneExpandedYears(expandedAvailableProjectYears, groupedProjects);
+    if (!hasInitializedAvailableProjectYears) {
+        ensureDefaultExpandedYear(expandedAvailableProjectYears, groupedProjects);
+        hasInitializedAvailableProjectYears = true;
+    }
+
+    groupedProjects.forEach(group => {
+        container.appendChild(
+            createYearAccordionSection(
+                group.year,
+                group.items,
+                expandedAvailableProjectYears.has(group.year),
+                toggleAvailableProjectYear,
+                createAvailableThesisProjectListItem,
+                'projects'
+            )
+        );
+    });
+}
+
+function createPastThesisProjectCard(project) {
+    const card = document.createElement('article');
+    const titleHtml = project.thesisLink
+        ? `<a href="${project.thesisLink}" target="_blank" rel="noopener noreferrer" class="text-xl font-bold text-slate-900 hover:text-blue-600 transition-colors inline-flex items-center gap-2">${project.title || 'Project title'} <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>`
+        : `<h4 class="text-xl font-bold text-slate-900">${project.title || 'Project title'}</h4>`;
+    const contactHtml = project.contact?.email
+        ? `
+            <span class="font-semibold text-slate-800">${project.contact.name || 'Contact'}:</span>
+            <a href="mailto:${project.contact.email}" class="text-blue-600 hover:text-blue-800 break-all">${project.contact.email}</a>
+        `
+        : `<span class="text-slate-500">Contact information will be updated soon.</span>`;
+
+    card.className = 'rounded-2xl border border-slate-200 bg-white p-5 md:p-6 shadow-sm';
+    card.innerHTML = `
+        <div class="mb-3">
+            ${titleHtml}
+        </div>
+        <p class="text-slate-600 text-sm leading-relaxed mb-4">${project.description || 'Project description will be updated soon.'}</p>
+        <div class="grid gap-3 text-sm">
+            <div class="inline-flex items-start gap-2 text-slate-600">
+                <i data-lucide="users" class="w-4 h-4 mt-0.5 shrink-0"></i>
+                <span><span class="font-semibold text-slate-800">Supervisor:</span> ${getSupervisorNames(project.supervisors)}</span>
+            </div>
+            <div class="inline-flex items-start gap-2 text-slate-600">
+                <i data-lucide="mail" class="w-4 h-4 mt-0.5 shrink-0"></i>
+                <span>${contactHtml}</span>
+            </div>
+        </div>
+    `;
+
+    return card;
+}
+
+function renderPastThesisProjects(containerId, items, emptyMessage) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    if (!Array.isArray(items) || items.length === 0) {
+        container.innerHTML = `
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-slate-500">
+                ${emptyMessage}
+            </div>
+        `;
+        return;
+    }
+
+    const groupedProjects = groupItemsByYear(items, getPastProjectYear);
+    pruneExpandedYears(expandedPastProjectYears, groupedProjects);
+
+    groupedProjects.forEach(group => {
+        const yearSection = document.createElement('section');
+        yearSection.className = 'rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm';
+
+        const header = document.createElement('button');
+        header.type = 'button';
+        header.className = 'w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-slate-50 transition-colors';
+        header.onclick = () => togglePastProjectYear(group.year);
+        header.innerHTML = `
+            <div class="flex items-center gap-3">
+                <h4 class="text-2xl font-bold text-slate-900">${group.year}</h4>
+                <span class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide bg-slate-100 text-slate-500">${group.items.length} projects</span>
+            </div>
+            <i data-lucide="${expandedPastProjectYears.has(group.year) ? 'chevron-up' : 'chevron-down'}" class="w-5 h-5 text-slate-400"></i>
+        `;
+
+        const content = document.createElement('div');
+        content.className = expandedPastProjectYears.has(group.year)
+            ? 'border-t border-slate-100 p-5 md:p-6 grid md:grid-cols-2 gap-5 bg-slate-50/40'
+            : 'hidden border-t border-slate-100 p-5 md:p-6 grid md:grid-cols-2 gap-5 bg-slate-50/40';
+
+        group.items.forEach(project => {
+            content.appendChild(createPastThesisProjectCard(project));
         });
 
-        renderNews();
-    }
+        yearSection.appendChild(header);
+        yearSection.appendChild(content);
+        container.appendChild(yearSection);
+    });
+}
 
-    function showAllNews() {
-        showAllNewsFlag = !showAllNewsFlag;
-        renderNews();
-    }
+function renderThesisProjects() {
+    if (typeof thesisProjectsData === 'undefined') return;
 
-// E. Publications
+    renderAvailableThesisProjects(
+        'available-thesis-container',
+        thesisProjectsData.available,
+        'No available thesis projects are listed right now.'
+    );
+
+    renderPastThesisProjects(
+        'past-thesis-container',
+        thesisProjectsData.past,
+        'Past thesis projects will be added here.'
+    );
+
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+}
+
+// F. Publications
 const VISIBLE_COUNT = 5;
 const expandedCategories = { journal: false, conference: false, review: false };
 function renderPubCategory(category, containerId, btnId) {
@@ -461,7 +795,7 @@ function toggleCategory(category) {
     lucide.createIcons();
 }
 
-// F. Gallery & Lightbox
+// G. Gallery & Lightbox
 function renderGallery() {
     const container = document.getElementById('gallery-container');
     if (!container || typeof galleryData === 'undefined') return;
@@ -497,19 +831,19 @@ function closeLightbox() {
     document.getElementById('lightbox').classList.add('hidden');
     document.body.style.overflow = '';
 }
-document.addEventListener('keydown', (e) => {
+document.addEventListener('keydown', (e) => { 
     if (e.key === 'Escape') {
         closeLightbox();
         closeResearchModal();
         closeNewsModal();
+        closeThesisModal();
     }
 });
-
 
 // --- 4. INITIALIZATION ---
 document.addEventListener('DOMContentLoaded', () => {
     const hash = window.location.hash.replace('#', '');
-    const validTabs = ['home', 'research', 'people', 'publications', 'news', 'gallery'];
+    const validTabs = ['home', 'research', 'people', 'publications', 'news', 'jobs', 'gallery'];
     const initialTab = validTabs.includes(hash) ? hash : 'home';
 
     document.querySelectorAll('.tab-content').forEach(el => {
@@ -522,6 +856,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     renderHomeNews();
     renderNews();
+    renderThesisProjects();
     renderTeam();
     renderAlumni();
     renderResearch(); // Now dynamic!
