@@ -232,68 +232,196 @@ function renderAlumni() {
     alumniWrapper.innerHTML = htmlContent;
 }
 
-// D. News & Home News
-function renderHomeNews() {
-    const container = document.getElementById('home-news-list');
-    if (!container || typeof newsData === 'undefined') return;
-    container.innerHTML = '';
-    newsData.slice(0, 10).forEach(news => {
-        const el = document.createElement('div');
-        el.className = 'p-4 hover:bg-slate-50 transition-colors cursor-pointer group border-l-2 border-transparent hover:border-blue-500';
-        el.onclick = () => news.link ? window.open(news.link, '_blank') : switchTab('news');
-        el.innerHTML = `
-            <div class="flex justify-between items-baseline mb-1">
-                 <span class="text-xs font-bold text-slate-400 uppercase">${news.date}</span>
-                 ${news.link ? '<i data-lucide="external-link" class="w-3 h-3 text-slate-300 group-hover:text-blue-500"></i>' : ''}
-            </div>
-            <h4 class="text-sm font-bold text-slate-800 group-hover:text-blue-600 line-clamp-2">${news.title}</h4>
-        `;
-        container.appendChild(el);
-    });
-}
+    // D. News & Home News
+    let currentNewsFilter = 'all';
+    let showAllNewsFlag = false;
 
-let currentNewsFilter = 'all';
-let showAllNewsFlag = false;
-function renderNews() {
-    const container = document.getElementById('news-container');
-    if (!container) return;
-    container.innerHTML = '';
-    let filtered = newsData.filter(n => currentNewsFilter === 'all' || n.type === currentNewsFilter);
-    const visibleNews = filtered.slice(0, showAllNewsFlag ? filtered.length : 6);
-    visibleNews.forEach(news => {
-        const el = document.createElement('div');
-        let typeColor = news.type === 'hiring' ? 'bg-amber-100 text-amber-700' : (news.type === 'publication' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700');
-        const titleHtml = news.link 
-            ? `<a href="${news.link}" target="_blank" class="font-bold text-slate-800 text-lg hover:text-blue-600 flex items-center gap-2 transition-colors">${news.title} <i data-lucide="external-link" class="w-4 h-4 text-slate-400"></i></a>`
-            : `<h3 class="font-bold text-slate-800 text-lg cursor-default">${news.title}</h3>`;
-        el.className = 'bg-white p-5 rounded-xl border border-slate-100 hover:shadow-md transition-all flex flex-col gap-2';
-        el.innerHTML = `
-            <div class="flex justify-between items-center">
-                <span class="text-xs font-bold text-slate-400 uppercase">${news.date}</span>
-                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase ${typeColor}">${news.type}</span>
-            </div>
-            ${titleHtml}
-            <p class="text-slate-500 text-sm line-clamp-2">${news.desc}</p>
-        `;
-        container.appendChild(el);
-    });
-    const btn = document.getElementById('news-show-more');
-    if (btn) {
-        if (filtered.length <= 6) btn.style.display = 'none';
-        else {
-            btn.style.display = 'flex';
-            btn.innerHTML = showAllNewsFlag ? 'Show Less' : `Show All News (${filtered.length})`;
+    function getNewsTypeColorClass(type) {
+        if (type === 'hiring') return 'bg-amber-100 text-amber-700';
+        if (type === 'publication') return 'bg-green-100 text-green-700';
+        if (type === 'event') return 'bg-blue-100 text-blue-700';
+        return 'bg-slate-100 text-slate-700';
+    }
+
+    function getNewsTypeLabel(type) {
+        return type && type.trim() ? type : 'news';
+    }
+
+    function getNewsBody(news) {
+        if (Array.isArray(news.body) && news.body.length > 0) return news.body;
+        if (typeof news.body === 'string' && news.body.trim()) return [news.body.trim()];
+        if (typeof news.desc === 'string' && news.desc.trim()) return [news.desc.trim()];
+        return ['More details will be updated soon.'];
+    }
+
+    function getNewsLead(news) {
+        const hasBody =
+            (Array.isArray(news.body) && news.body.length > 0) ||
+            (typeof news.body === 'string' && news.body.trim());
+
+        if (!hasBody) return '';
+        return news.desc || '';
+    }
+
+    function renderNewsModalBody(news) {
+        const body = document.getElementById('news-modal-body');
+        if (!body) return;
+
+        body.innerHTML = '';
+
+        getNewsBody(news).forEach(paragraph => {
+            const p = document.createElement('p');
+            p.className = 'text-base leading-8 text-slate-700';
+            p.textContent = paragraph;
+            body.appendChild(p);
+        });
+    }
+
+    function openNewsModal(news) {
+        const modal = document.getElementById('news-modal');
+        const title = document.getElementById('news-modal-title');
+        const date = document.getElementById('news-modal-date');
+        const type = document.getElementById('news-modal-type');
+        const desc = document.getElementById('news-modal-desc');
+        const link = document.getElementById('news-modal-link');
+        const linkLabel = document.getElementById('news-modal-link-label');
+
+        if (!modal || !news) return;
+
+        title.textContent = news.title || '';
+        date.textContent = news.date || '';
+        type.textContent = getNewsTypeLabel(news.type);
+        type.className = `text-[11px] font-bold px-3 py-1 rounded-full uppercase ${getNewsTypeColorClass(news.type)}`;
+
+        const leadText = getNewsLead(news);
+        if (leadText) {
+            desc.textContent = leadText;
+            desc.classList.remove('hidden');
+        } else {
+            desc.textContent = '';
+            desc.classList.add('hidden');
+        }
+
+        renderNewsModalBody(news);
+
+        if (news.link) {
+            link.href = news.link;
+            link.classList.remove('hidden');
+            linkLabel.textContent = news.sourceLabel || 'Visit Source';
+        } else {
+            link.removeAttribute('href');
+            link.classList.add('hidden');
+        }
+
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    function closeNewsModal() {
+        const modal = document.getElementById('news-modal');
+        if (!modal) return;
+
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+
+    function handleNewsModalBackdrop(event) {
+        if (event.target === event.currentTarget) {
+            closeNewsModal();
         }
     }
-}
-function filterNews(type) {
-    currentNewsFilter = type; showAllNewsFlag = false;
-    document.querySelectorAll('#news .filter-btn').forEach(b => {
-            b.classList.toggle('active', b.textContent.toLowerCase().includes(type) || (type==='all' && b.textContent==='All'));
-    });
-    renderNews();
-}
-function showAllNews() { showAllNewsFlag = !showAllNewsFlag; renderNews(); }
+
+    function renderHomeNews() {
+        const container = document.getElementById('home-news-list');
+        if (!container || typeof newsData === 'undefined') return;
+
+        container.innerHTML = '';
+
+        newsData.slice(0, 10).forEach(news => {
+            const el = document.createElement('div');
+            el.className = 'p-4 hover:bg-slate-50 transition-colors cursor-pointer group border-l-2 border-transparent hover:border-blue-500';
+            el.onclick = () => openNewsModal(news);
+
+            el.innerHTML = `
+                <div class="flex justify-between items-baseline mb-1 gap-3">
+                    <span class="text-xs font-bold text-slate-400 uppercase">${news.date || ''}</span>
+                    <i data-lucide="arrow-right" class="w-3 h-3 text-slate-300 group-hover:text-blue-500 transition-colors"></i>
+                </div>
+                <h4 class="text-sm font-bold text-slate-800 group-hover:text-blue-600 line-clamp-2 transition-colors">${news.title || ''}</h4>
+            `;
+
+            container.appendChild(el);
+        });
+
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    function renderNews() {
+        const container = document.getElementById('news-container');
+        if (!container || typeof newsData === 'undefined') return;
+
+        container.innerHTML = '';
+
+        const filtered = newsData.filter(news => currentNewsFilter === 'all' || news.type === currentNewsFilter);
+        const visibleNews = filtered.slice(0, showAllNewsFlag ? filtered.length : 6);
+
+        visibleNews.forEach(news => {
+            const el = document.createElement('div');
+            const typeColor = getNewsTypeColorClass(news.type);
+
+            el.className = 'bg-white p-5 rounded-xl border border-slate-100 hover:shadow-md transition-all flex flex-col gap-3 group cursor-pointer';
+            el.onclick = () => openNewsModal(news);
+
+            el.innerHTML = `
+                <div class="flex justify-between items-center gap-3">
+                    <span class="text-xs font-bold text-slate-400 uppercase">${news.date || ''}</span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase ${typeColor}">${getNewsTypeLabel(news.type)}</span>
+                </div>
+                <h3 class="font-bold text-slate-800 text-lg group-hover:text-blue-600 transition-colors">${news.title || ''}</h3>
+                <p class="text-slate-500 text-sm line-clamp-2">${news.desc || ''}</p>
+                <div class="pt-2 text-sm font-semibold text-blue-600 flex items-center gap-2">
+                    Read details <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </div>
+            `;
+
+            container.appendChild(el);
+        });
+
+        const btn = document.getElementById('news-show-more');
+        if (btn) {
+            if (filtered.length <= 6) {
+                btn.style.display = 'none';
+            } else {
+                btn.style.display = 'flex';
+                btn.innerHTML = showAllNewsFlag
+                    ? 'Show Less'
+                    : `Show All News (${filtered.length})`;
+            }
+        }
+
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    function filterNews(type) {
+        currentNewsFilter = type;
+        showAllNewsFlag = false;
+
+        document.querySelectorAll('#news .filter-btn').forEach(button => {
+            button.classList.toggle(
+                'active',
+                button.textContent.toLowerCase().includes(type) || (type === 'all' && button.textContent === 'All')
+            );
+        });
+
+        renderNews();
+    }
+
+    function showAllNews() {
+        showAllNewsFlag = !showAllNewsFlag;
+        renderNews();
+    }
 
 // E. Publications
 const VISIBLE_COUNT = 5;
@@ -369,12 +497,14 @@ function closeLightbox() {
     document.getElementById('lightbox').classList.add('hidden');
     document.body.style.overflow = '';
 }
-document.addEventListener('keydown', (e) => { 
+document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         closeLightbox();
         closeResearchModal();
+        closeNewsModal();
     }
 });
+
 
 // --- 4. INITIALIZATION ---
 document.addEventListener('DOMContentLoaded', () => {

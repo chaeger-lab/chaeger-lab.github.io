@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <!-- 2. Custom Styles -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased selection:bg-blue-200 selection:text-blue-900">
 
@@ -193,6 +193,59 @@
             </div>
         </div>
     </div>
+
+    <!-- NEWS MODAL -->
+    <div
+        id="news-modal"
+        class="fixed inset-0 z-[100] bg-slate-900/95 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-300 overflow-y-auto"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="news-modal-title"
+        onclick="handleNewsModalBackdrop(event)"
+    >
+        <div class="bg-white rounded-3xl max-w-3xl w-full relative overflow-hidden shadow-2xl animate-fade-in my-8">
+            <button
+                class="absolute top-4 right-4 z-10 bg-slate-900/10 hover:bg-slate-900/20 text-slate-700 rounded-full p-2 transition-colors"
+                onclick="closeNewsModal()"
+            >
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+
+            <div class="p-8 md:p-10 border-b border-slate-100 bg-gradient-to-br from-white via-slate-50 to-blue-50">
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                    <span id="news-modal-date" class="text-xs font-bold text-slate-400 uppercase tracking-wide"></span>
+                    <span id="news-modal-type" class="text-[11px] font-bold px-3 py-1 rounded-full uppercase bg-slate-100 text-slate-700"></span>
+                </div>
+                <h2 id="news-modal-title" class="text-3xl md:text-4xl font-bold text-slate-900 leading-tight"></h2>
+                <p id="news-modal-desc" class="mt-4 text-base md:text-lg text-slate-600 leading-relaxed hidden"></p>
+            </div>
+
+            <div class="p-8 md:p-10">
+                <div id="news-modal-body" class="space-y-5"></div>
+
+                <div class="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                    <a
+                        id="news-modal-link"
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="hidden inline-flex items-center justify-center gap-2 px-5 py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl transition-colors"
+                    >
+                        <span id="news-modal-link-label">Visit Source</span>
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </a>
+
+                    <button
+                        onclick="closeNewsModal()"
+                        class="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-colors"
+                    >
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script src="data.js"></script>
     <script src="main.js"></script>

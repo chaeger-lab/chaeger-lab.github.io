@@ -185,39 +185,60 @@ const publicationsData = [
 
 // --- 5. NEWS & EVENTS ---
 const newsData = [
-    { 
-        id: 1, 
-        type: 'event', 
-        date: '29 January, 2026', 
-        title: 'Christian has been promoted to Associate Professor', 
-        desc: 'Christian Häger has given his promotion lecture - "From Communication to Sensing: Machine Learning in Optical Fiber Systems", and has become an Associate Professor. Congratulations!',
-        link: 'https://www.linkedin.com/posts/chalmersuniversity-academiccareer-promotionlecture-ugcPost-7422899621657587712-hd9z?utm_source=share&utm_medium=member_desktop&rcm=ACoAADTLmQUBTJLqTpKccR8hZARr8sZd82OhgLk'
+    {
+        id: 1,
+        type: 'event',
+        date: '29 January, 2026',
+        title: 'Christian has been promoted to Associate Professor',
+        desc: 'Christian Häger has given his promotion lecture and has become an Associate Professor.',
+        body: [
+            'Christian Häger delivered his promotion lecture, "From Communication to Sensing: Machine Learning in Optical Fiber Systems."',
+            'Following the lecture, he was promoted to Associate Professor at Chalmers University of Technology.',
+            'This milestone reflects his contributions to data-driven optical communication and fiber sensing research.'
+        ],
+        link: 'https://www.linkedin.com/posts/chalmersuniversity-academiccareer-promotionlecture-ugcPost-7422899621657587712-hd9z?utm_source=share&utm_medium=member_desktop&rcm=ACoAADTLmQUBTJLqTpKccR8hZARr8sZd82OhgLk',
+        sourceLabel: 'View LinkedIn Post'
     },
-    { 
-        id: 2, 
-        type: 'hiring', 
-        date: '30 January, 2026', 
-        title: 'Open PhD Positions in Optical Communications and Fiber Sensing', 
-        desc: 'The starting date for this position is Fall 2026. Check the following link for more details.',
-        link: 'https://www.chalmers.se/en/about-chalmers/work-with-us/vacancies/?rmpage=job&rmjob=14548&rmlang=UK'
+    {
+        id: 2,
+        type: 'hiring',
+        date: '30 January, 2026',
+        title: 'Open PhD Positions in Optical Communications and Fiber Sensing',
+        desc: 'The starting date for this position is Fall 2026. Check the source page for application details.',
+        body: [
+            'The lab is opening PhD positions in optical communications and fiber sensing.',
+            'The planned starting time for this position is Fall 2026.',
+            'Please check the official vacancy page for application requirements, eligibility, and deadlines.'
+        ],
+        link: 'https://www.chalmers.se/en/about-chalmers/work-with-us/vacancies/?rmpage=job&rmjob=14548&rmlang=UK',
+        sourceLabel: 'View Vacancy Page'
     },
-    { 
-        id: 3, 
-        type: 'publication', 
-        date: 'xxx xx, 20xx', 
-        title: 'Seminar on xxx', 
-        desc: 'xxx.',
-        link: '' 
+    {
+        id: 3,
+        type: 'publication',
+        date: 'xx xxx, 20xx',
+        title: 'Seminar on xxx',
+        desc: 'Short preview text for this seminar news item.',
+        body: [
+            'Write the full seminar description here.',
+            'You can add multiple paragraphs by adding more strings to this body array.'
+        ],
+        link: ''
     },
-    { 
-        id: 4, 
-        type: '', 
-        date: 'xxx xx, 20xx', 
-        title: 'Received a Grant xxx', 
-        desc: 'xxx.',
-        link: '' 
+    {
+        id: 4,
+        type: 'event',
+        date: 'xx xxx, 20xx',
+        title: 'Received a Grant xxx',
+        desc: 'Short preview text for the grant announcement.',
+        body: [
+            'Write the full grant announcement here.',
+            'This full text will be shown inside the floating modal window.'
+        ],
+        link: ''
     }
 ];
+
 
 // --- 6. GALLERY ---
 const galleryData = [
