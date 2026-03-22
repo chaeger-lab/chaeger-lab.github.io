@@ -61,17 +61,6 @@ Website
 
 ---
 
-## Deploy to Netlify (2 minutes)
-
-1. Go to [netlify.com](https://netlify.com) → Sign up
-2. "Add new site" → "Deploy manually"
-3. Drag and drop `website-main` folder
-4. Done! Get instant URL
-
-**To update:** Drag and drop folder again
-
----
-
 ## File Overview
 
 ```
