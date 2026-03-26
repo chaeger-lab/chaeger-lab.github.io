@@ -759,13 +759,34 @@ function renderThesisProjects() {
 
 // F. Publications
 const VISIBLE_COUNT = 5;
-const expandedCategories = { journal: false, conference: false, review: false };
+const expandedCategories = { journal: false, conference: false, review: false, talks: false };
+
+function getYearNumber(value) {
+    const yearLabel = extractYearLabel(value, '0');
+    const yearNumber = Number.parseInt(yearLabel, 10);
+    return Number.isFinite(yearNumber) ? yearNumber : Number.NEGATIVE_INFINITY;
+}
+
+function sortItemsByYearDesc(items, getYearValue = item => item.year) {
+    return items
+        .map((item, index) => ({
+            item,
+            index,
+            year: getYearNumber(getYearValue(item))
+        }))
+        .sort((left, right) => {
+            if (right.year !== left.year) return right.year - left.year;
+            return left.index - right.index;
+        })
+        .map(entry => entry.item);
+}
+
 function renderPubCategory(category, containerId, btnId) {
     const container = document.getElementById(containerId);
     const btn = document.getElementById(btnId);
     if (!container || typeof publicationsData === 'undefined') return;
     container.innerHTML = '';
-    const items = publicationsData.filter(p => p.type === category);
+    const items = sortItemsByYearDesc(publicationsData.filter(p => p.type === category));
     items.forEach((pub, index) => {
         const el = document.createElement('div');
         const isHidden = !expandedCategories[category] && index >= VISIBLE_COUNT;
@@ -787,11 +808,73 @@ function renderPubCategory(category, containerId, btnId) {
         }
     }
 }
+
+function getTalkItems() {
+    if (typeof talksData === 'undefined') return [];
+
+    const talkGroups = [
+        { key: 'invited', label: 'Invited Talk' },
+        { key: 'other', label: 'Talk' }
+    ];
+
+    return sortItemsByYearDesc(
+        talkGroups.flatMap(group => {
+            const items = Array.isArray(talksData[group.key]) ? talksData[group.key] : [];
+            return items.map(talk => ({
+                ...talk,
+                categoryLabel: group.label
+            }));
+        })
+    );
+}
+
+function renderTalks(containerId, btnId) {
+    const container = document.getElementById(containerId);
+    const btn = document.getElementById(btnId);
+    if (!container) return;
+
+    container.innerHTML = '';
+    const items = getTalkItems();
+
+    items.forEach((talk, index) => {
+        const el = document.createElement('div');
+        const isHidden = !expandedCategories.talks && index >= VISIBLE_COUNT;
+        const links = Array.isArray(talk.links)
+            ? talk.links
+                .filter(link => link && link.url)
+                .map(link => `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="font-semibold text-emerald-700 hover:text-emerald-900 hover:underline">${link.label}</a>`)
+                .join(' · ')
+            : '';
+
+        el.className = `text-slate-700 leading-relaxed ${isHidden ? 'hidden-item' : ''}`;
+        el.innerHTML = `
+            ${index + 1}. <span class="font-bold text-slate-900">"${talk.title},"</span>
+            <span class="text-sm font-semibold uppercase tracking-wide text-emerald-700">${talk.categoryLabel}</span>,
+            <span class="italic text-slate-600">${talk.venue}</span>,
+            ${talk.date || talk.year}.
+            ${links ? `<span class="ml-2">${links}</span>` : ''}
+        `;
+        container.appendChild(el);
+    });
+
+    if (btn) {
+        if (items.length <= VISIBLE_COUNT) {
+            btn.style.display = 'none';
+        } else {
+            btn.style.display = 'flex';
+            btn.innerHTML = expandedCategories.talks
+                ? `Show Less <i data-lucide="chevron-up" class="w-4 h-4"></i>`
+                : `See All Talks (${items.length - VISIBLE_COUNT} more) <i data-lucide="chevron-down" class="w-4 h-4"></i>`;
+        }
+    }
+}
+
 function toggleCategory(category) {
     expandedCategories[category] = !expandedCategories[category];
     if (category === 'journal') renderPubCategory('journal', 'pub-list-journal', 'btn-see-journal');
     else if (category === 'conference') renderPubCategory('conference', 'pub-list-conference', 'btn-see-conference');
     else if (category === 'review') renderPubCategory('review', 'pub-list-review', 'btn-see-review');
+    else if (category === 'talks') renderTalks('pub-list-talks', 'btn-see-talks');
     lucide.createIcons();
 }
 
@@ -864,6 +947,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderPubCategory('journal', 'pub-list-journal', 'btn-see-journal');
     renderPubCategory('conference', 'pub-list-conference', 'btn-see-conference');
     renderPubCategory('review', 'pub-list-review', 'btn-see-review');
+    renderTalks('pub-list-talks', 'btn-see-talks');
     renderGallery(); 
     
     if (typeof lucide !== 'undefined') lucide.createIcons();

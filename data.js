@@ -747,6 +747,15 @@ const publicationsData = [
         authors: "Christian Häger, Alexandre Graell i Amat, Alex Alvarado, and Erik Agrell",
         source: "Proc. IEEE Glob. Communication Conf. (GLOBECOM), Anaheim, CA",
         link: "https://research.chalmers.se/publication/163620"
+    },
+    {
+        id: 67,
+        type: "conference",
+        year: "2026",
+        title: "PIDT: Physics-Informed Digital Twin for Optical Fiber Parameter Estimation",
+        authors: "Zicong Jiang, Magnus Karlsson, Erik Agrell, Christian Häger",
+        source: "Proc. Optical Fiber Communication Conf. (OFC), Los Angeles, CA",
+        link: "https://arxiv.org/abs/2601.07436"
     }
 ];
 
