@@ -6,8 +6,24 @@ Website
 **🚀 Most Common Tasks**
 
 ---
-
-## Add News (2 minutes)
+## Contents Editing
+You can modify contents in `data.js` file.
+### Add Your Research Topic
+You can add description of your current research topic under 
+```
+const researchData
+```
+### Modify Lab Members
+You can change lab member information under
+````
+const teamData
+````
+You can change your photo, your social media link ...
+The alumni information in the same page can be edited in
+```
+const alumniData
+```
+### Add News (2 minutes)
 
 1. Open `data.js`
 2. Go to line ~187 (find `newsData`)
@@ -52,10 +68,10 @@ Website
 
 ## Deploy to GitHub Pages (5 minutes)
 
-1. Go to [github.com](https://github.com) → New repository
+<!-- 1. Go to [github.com](https://github.com) → New repository
 2. Upload ALL files from `website-main` folder
 3. Settings → Pages → Select **main** branch → Save
-4. Your site: `https://[username].github.io/[repo-name]/`
+4. Your site: `https://[username].github.io/[repo-name]/` -->
 
 **To update:** Edit files → Upload to GitHub → Wait 1 minute
 
