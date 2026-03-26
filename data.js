@@ -818,19 +818,15 @@ const thesisProjectsData = {
             type: "Master Thesis",
             status: "available",
             year: "2026",
-            title: "Machine Learning for Optical Fiber Sensing",
+            title: "Physics-Informed Machine Learning for Optical Fiber Modeling",
             term: "Flexible start in 2026",
-            location: "DDCS Lab, Chalmers",
-            description: "Develop a data-driven thesis project around optical fiber sensing. Depending on your background, the work can focus on signal processing, feature extraction, event detection, or lightweight machine learning models for sensing data.",
+            location: "Chalmers",
+            description: "TBD",
             references: [
                 {
-                    label: "Christian Häger - Research Profile",
-                    url: "https://chaeger.github.io/"
+                    label: "Song, Yuchen, et al. Physics-informed neural operator-based full wavefield back-propagation for multi-span optical transmission. Optical Fiber Communication Conference. Optica Publishing Group, 2023.",
+                    url: "https://opg.optica.org/abstract.cfm?uri=OFC-2023-M2F.5"
                 },
-                {
-                    label: "Chalmers Student Theses",
-                    url: "https://odr.chalmers.se/"
-                }
             ],
             supervisors: [
                 {
@@ -845,8 +841,8 @@ const thesisProjectsData = {
                 }
             ],
             contact: {
-                name: "Christian Häger",
-                email: "christian.haeger@chalmers.se",
+                name: "Zicong Jiang",
+                email: "zicongj@chalmers.se",
                 note: "Please send your CV, transcript, and a short summary of your interests."
             }
         },
@@ -855,7 +851,7 @@ const thesisProjectsData = {
             type: "Master Thesis",
             status: "available",
             year: "2027",
-            title: "AI-Assisted Monitoring for Optical Communication Systems",
+            title: "TBD",
             term: "Spring / Fall semester 2027",
             location: "DDCS Lab, Chalmers",
             description: "Explore how machine learning can be used for monitoring, diagnosis, and adaptation in optical communication systems. The scope can be tuned toward simulations, data analysis, or model development.",
@@ -871,18 +867,13 @@ const thesisProjectsData = {
             ],
             supervisors: [
                 {
-                    name: "Christian Häger",
+                    name: "TBD",
                     role: "Associate Professor",
                     email: "christian.haeger@chalmers.se"
-                },
-                {
-                    name: "Rick Butler",
-                    role: "Postdoc Researcher",
-                    email: "xxx@chalmers.se"
                 }
             ],
             contact: {
-                name: "Christian Häger",
+                name: "TBD",
                 email: "christian.haeger@chalmers.se",
                 note: "Students with backgrounds in communication systems, machine learning, or applied mathematics are welcome."
             }
@@ -893,7 +884,7 @@ const thesisProjectsData = {
             id: "past-1",
             type: "Master Thesis",
             year: "2025",
-            title: "Neural Equalization for Short-Reach Optical Links",
+            title: "Channel Charting...",
             thesisLink: "https://odr.chalmers.se/",
             description: "A brief study of neural-network-based equalization strategies for short-reach optical links.",
             supervisors: [
