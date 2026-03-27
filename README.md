@@ -92,6 +92,7 @@ const alumniData
 ```
 
 * Save → Refresh browser → Deploy
+
 ⚠️ There are three types in `publicationsData`: `journal, conference, review`. In order to update talks in Publication section, you can edite `talksData` in `data.js`.
 
 ---
