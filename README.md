@@ -141,8 +141,3 @@ const alumniData
 ---
 
 **📚 Full Guide:** See `USER_GUIDE.md` for detailed instructions.
-
-
-## Updates
-### 2026.03.20
-Zicong: Upload Website Files.
