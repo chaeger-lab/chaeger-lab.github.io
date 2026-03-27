@@ -824,18 +824,23 @@ const thesisProjectsData = {
     available: [
         {
             id: "thesis-1",
-            type: "Master Thesis",
+            type: "Bachelor / Master Thesis",
             status: "available",
             year: "2026",
-            title: "Physics-Informed Machine Learning for Optical Fiber Modeling",
+            title: "Physics-Informed Machine Learning for Optical Fiber Channel Modeling",
             term: "Flexible start in 2026",
             location: "Chalmers",
-            description: "TBD",
+            description: "Optical fiber communication systems form the backbone of modern digital infrastructure, enabling global Internet connectivity with ultra-high bandwidth and low latency. An accurate fiber channel model plays a critical role in optimizing transmission performance, as it enables the development of advanced receivers, analysis of signal distortions, signal shaping and coding design, and reliable system performance prediction. The nonlinear Schrödinger equation (NLSE) serves as the fundamental mathematical model for describing optical signal propagation in fibers. However, the NLSE is a nonlinear partial differential equation that lacks an analytical solution except for a few specific cases. Traditional numerical methods such as the split-step Fourier method (SSFM), have been widely used to obtain approximate solutions. While these methods are physically accurate, they are computationally expensive and limited in scalability for real-time applications. Recent advances in physics-informed machine learning offer new opportunities for efficient and physically consistent optical fiber modeling. By embedding physical laws (such as the NLSE) directly into the learning process through a customized loss, models such as physics-informed neural networks (PINNs) or physics-informed neural operators (PINO) can learn to approximate fiber channel behavior and perform fast inference without requiring large datasets [1,2]. In this project, we will explore how recent physics-informed machine learning methods can be utilized for fiber channel modeling together and evaluate their performance.",
             references: [
                 {
                     label: "Song, Yuchen, et al. Physics-informed neural operator-based full wavefield back-propagation for multi-span optical transmission. Optical Fiber Communication Conference. Optica Publishing Group, 2023.",
                     url: "https://opg.optica.org/abstract.cfm?uri=OFC-2023-M2F.5"
                 },
+                {
+                    label: "Wang, Sifan, et al. Fundiff: Diffusion models over function spaces for physics-informed generative modeling. arXiv preprint arXiv:2506.07902 (2025).",
+                    url: "https://arxiv.org/abs/2506.07902"
+                },
+
             ],
             supervisors: [
                 {
