@@ -13,17 +13,46 @@ You can add description of your current research topic under
 ```
 const researchData
 ```
+The key contents you need to edit are 
+```javascript
+{
+   icon: "cpu",
+   title: "topic 2",
+   desc: "some description here.",
+   abstract: "Details here.",
+   image: ""
+}
+```
+* The icon symbol can be selected from https://lucide.dev/icons/. Replace the icon id with the one you selected.
+* The `desc` will be displayed in the research topic info card on the webpage.
+* The `abstract` will be displayed in modal details after clicking.
 ### Modify Lab Members
 You can change lab member information under
 ````
 const teamData
 ````
 You can change your photo, your social media link ...
+```javascript
+{
+image: "images/xxx.jpg", 
+email: "xxx@chalmers.se",
+linkedin: "https://www.linkedin.com/",
+website: "https://xxx.github.io/"
+}
+```
 The alumni information in the same page can be edited in
-```
+```javascript
 const alumniData
+{
+   name: "xxx",
+   role: "xxx (20xx)",
+   destination: "xxxx",
+   link: "",
+   type: "bachelor"
+}
 ```
-### Add News (2 minutes)
+* `type` can be 'phd', 'visiting', 'master' and 'bachelor'. Postdoc should use 'phd' type, and will be categorized into `PhD Graduates & Postdocs` part.
+### Add News
 
 1. Open `data.js`
 2. Go to line ~187 (find `newsData`)
@@ -44,11 +73,11 @@ const alumniData
 
 ---
 
-## Add Publication (2 minutes)
+## Add Publication
 
-1. Open `data.js`
-2. Go to line ~156 (find `publicationsData`)
-3. Add at the top:
+* Open `data.js`
+<!-- 2. Go to line ~156 (find `publicationsData`) -->
+<!-- 3. Add at the top: -->
 
 ```javascript
 {
@@ -62,7 +91,8 @@ const alumniData
 },
 ```
 
-4. Save → Refresh browser → Deploy
+* Save → Refresh browser → Deploy
+⚠️ There are three types in `publicationsData`: `journal, conference, review`. In order to update talks in Publication section, you can edite `talksData` in `data.js`.
 
 ---
 
