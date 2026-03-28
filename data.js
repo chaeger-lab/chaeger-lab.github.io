@@ -102,8 +102,8 @@ const teamData = [
         id: "master1",
         name: "Jun Cao",
         role: "Master student",
-        image: "images/jun.png",
-        email: "charlie@chalmers.se",
+        image: "images/jun.jpg",
+        email: "junca@chalmers.se",
         linkedin: "",
         website: ""
     }
