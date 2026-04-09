@@ -76,7 +76,7 @@ const teamData = [
         name: "José Miguel Mateos Ramos",
         role: "PhD Candidate",
         image: "images/jose.jpeg",
-        email: "zicongj@chalmers.se",
+        email: "josemi@chalmers.se",
         linkedin: "",
         website: ""
     },
