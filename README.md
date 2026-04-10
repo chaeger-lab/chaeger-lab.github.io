@@ -3,7 +3,7 @@ Website
 
 # Quick Start Guide - DDCS Lab Website
 
-**🚀 Most Common Tasks 1**
+**🚀 Most Common Tasks**
 
 ---
 ## Contents Editing
