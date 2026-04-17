@@ -75,10 +75,10 @@ const teamData = [
         id: "phd1",
         name: "José Miguel Mateos Ramos",
         role: "PhD Candidate",
-        image: "images/jose.jpeg",
+        image: "images/jose_ramos.jpg",
         email: "josemi@chalmers.se",
-        linkedin: "",
-        website: ""
+        linkedin: "https://www.linkedin.com/in/jmateosramos/",
+        website: "https://sites.google.com/view/jmateos"
     },
     {
         id: "phd2",
