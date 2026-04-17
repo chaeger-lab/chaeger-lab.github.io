@@ -762,6 +762,21 @@ const publicationsData = [
 // --- 5. NEWS & EVENTS ---
 const newsData = [
     { 
+        id: 5, 
+        type: 'event', 
+        year: '2026',
+        date: '2 March, 2026', 
+        title: 'José participated as invited speaker in the Huawei BTS innovation workshop', 
+        desc: 'José Miguel Mateos Ramos presented his work - "Machine learning for hardware-aware integrated sensing and communication". Well done!',
+        body: [
+            'José Miguel Mateos Ramos took part in the Wireless BTS Innovation Workshop organized by Huawei Sweden, bringing together leading researchers and industry experts working at the forefront of next-generation wireless technologies.',
+            'He presented his work on "Machine learning for hardware-aware integrated sensing and communication".',
+            'After his presentation, he participated in a panel discussion focused on the intersection of artificial intelligence and hardware design, engaging in forward-looking conversations on wireless infrastructure.'
+        ],
+        link: 'https://www.linkedin.com/feed/update/urn:li:activity:7435375700490149889/?originTrackingId=9elqtocgrCW26%2BBdu%2FfzFA%3D%3D',
+        sourceLabel: 'View LinkedIn Post'
+    },
+    { 
         id: 1, 
         type: 'event', 
         year: '2026',
