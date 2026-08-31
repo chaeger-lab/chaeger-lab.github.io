@@ -122,6 +122,11 @@ const teamData = [
         email: "junca@chalmers.se",
         linkedin: "",
         website: ""
+    },
+    {
+        id: "intern1",
+        name: "Xuchen Zhu",
+        role: "Intern"
     }
 ];
 
@@ -772,11 +777,42 @@ const publicationsData = [
         authors: "Zicong Jiang, Magnus Karlsson, Erik Agrell, Christian Häger",
         source: "Proc. Optical Fiber Communication Conf. (OFC), Los Angeles, CA",
         link: "https://arxiv.org/abs/2601.07436"
+    },
+    {
+        id: 68,
+        type: "conference",
+        year: "2026",
+        title: "End-to-End Modelling of Earthquake-Induced Polarisation Perturbations in Submarine Optical Fibres",
+        authors: "Rick M. Butler, José Núñez-Kasaneva, Gabriele Liga, Magnus Karlsson, Alex Alvarado, Christian Häger",
+        source: "Eur. Conf. Opt. Commun.",
+        link: "https://arxiv.org/abs/2608.11903v1"
+    },
+    {
+        id: 69,
+        type: "conference",
+        year: "2026",
+        title: "Accurate Multi-perturbation Localization in Optical Fibers with Polarization-based Forward Sensing",
+        authors: "Lampros Lanaras, Rick M. Butler, Christian Häger, Alex Alvarado",
+        source: "Eur. Conf. Opt. Commun.",
+        link: "https://arxiv.org/abs/2608.02872"
     }
 ];
 
 // --- 5. NEWS & EVENTS ---
 const newsData = [
+    {
+        id: 6,
+        type: 'event',
+        year: '2026',
+        date: '22 September, 2026',
+        title: 'Rick presented two papers at the European Conference on Optical Communication',
+        desc: 'Two papers were presented: one by himself and one by his student Lampros Lanaras.',
+        body: [
+            'Rick M. Butler is travelling to one of the largest conferences in the field to present works on optical fibre perturbation modelling and sensing.',
+            'His own paper: "End-to-End Modelling of Earthquake-Induced Polarisation Perturbations in Submarine Optical Fibres" was presented on Tuesday (the 22nd), and nominated for the best senior paper award.',
+            'The paper by his student Lampros Lanaras was presented one day later at the poster session!'
+        ]
+    },
     { 
         id: 5, 
         type: 'event', 
