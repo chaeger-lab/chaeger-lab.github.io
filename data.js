@@ -48,6 +48,22 @@ const researchData = [
         desc: "some description here.",
         abstract: "Details here.",
         image: "https://images.unsplash.com/photo-1655720828018-edd2daec9349?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+        id: "earthquake_modelling",
+        icon: "activity",
+        title: "Modelling optical fibre propagation during earthquakes",
+        desc: "We model the evolution of polarised light propagating through a fibre that is compressed and pulled by seismic waves.",
+        abstract: "The state of polarisation (SOP) of light propagating through an optical fibre is affected by the shape of the fibre cross-section. Nearby mechanical events---such as earthquakes---pull or compress the fibre, changing the cross-section and hence the evolution of the SOP. Although this effect has been analysed extensively in experiments, little is still known of the mathematical coupling between the mechanical forces and SOP. In this project, we do a deep dive into exactly this coupling, and derive a numerical model using the underlying physics.",
+        image: "https://images.unsplash.com/photo-1687618053208-28a67cf7bddb?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+        id: "perturbation_sensing",
+        icon: "radius",
+        title: "Polarisation-based fibre perturbation sensing",
+        desc: "We monitor the polarisation of light at the receiver to localise mechanical events that happen along an optical fibre.",
+        abstract: "The state of polarisation (SOP) of light propagating through an optical fibre is affected by the shape of the fibre cross-section. Nearby mechanical events change the cross-section or twist the fibre, modulating the SOP. These modulations can be detected at the receiver. Using the concept that the propagation speed of light is frequency-dependent (chromatic dispersion), we can localise fibre perturbations by monitoring SOP fluctuations at the receiver.",
+        image: "https://images.unsplash.com/photo-1671669648501-9830777da04c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     }
 ];
 
