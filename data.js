@@ -803,9 +803,13 @@ const newsData = [
     {
         id: 6,  // increment number
         type: 'event',  // or 'hiring', 'publication'
+        year: '2026',
         date: 'September 1, 2026',
         title: 'José successfully defended his PhD!',
-        desc: 'Big congratulations to José for defending his PhD! Follow the link for more information and pictures. ',
+        desc: 'Big congratulations to José for defending his PhD!  ',
+        body: [
+            'Follow the link for more information and pictures.' 
+        ]
         link: 'https://www.linkedin.com/feed/update/urn:li:activity:7500573039244484608'  // optional
     },
     {
