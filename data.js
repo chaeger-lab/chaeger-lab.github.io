@@ -115,7 +115,7 @@ const teamData = [
         website: "https://zicongjiang.github.io/zicong-jiang/"
     },
     {
-        id: "master1",
+        id: "phd4",
         name: "Jun Cao",
         role: "PhD Student",
         image: "images/jun.jpg",
@@ -812,6 +812,19 @@ const newsData = [
             'His own paper: "End-to-End Modelling of Earthquake-Induced Polarisation Perturbations in Submarine Optical Fibres" was presented on Tuesday (the 22nd), and nominated for the best senior paper award.',
             'The paper by his student Lampros Lanaras was presented one day later at the poster session!'
         ]
+    },
+    {
+        id: 6,
+        type: 'event',
+        year: '2026',
+        date: '17 March, 2026',
+        title: 'Zicong presented a paper at the Optical Fiber Communication (OFC) Conference',
+        desc: 'Zicong presented his work - "PIDT: Physics-Informed Digital Twin for Optical Fiber Parameter Estimation".',
+        body: [
+            'Zicong Jiang gave an oral presentation on physics-informed fibre parameter estimation at one of the world’s leading Optica conferences - OFC 2026.'
+        ],
+        link: 'https://arxiv.org/abs/2601.07436',
+        sourceLabel: 'Read the Paper'
     },
     { 
         id: 5, 
