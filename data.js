@@ -930,7 +930,7 @@ const thesisProjectsData = {
                 },
                 {
                     name: "Zicong Jiang",
-                    role: "PhD Candidate",
+                    role: "PhD Student",
                     email: "zicongj@chalmers.se"
                 }
             ],
@@ -942,9 +942,46 @@ const thesisProjectsData = {
         },
         {
             id: "thesis-2",
+            type: "Bachelor / Master Thesis",
+            status: "available",
+            year: "2026",
+            title: "Robust Fiber-Longitudinal Power Profile Estimation under Chromatic Dispersion Uncertainty",
+            term: "Flexible start in 2026",
+            location: "Chalmers",
+        
+            description: "Monitoring the longitudinal optical power evolution along a fiber link is an important capability for optical network diagnostics, fault localization, and performance monitoring. Recently, linear least-squares methods based on first-order regular perturbation, such as LLS-RP1, have been proposed to estimate the fiber-longitudinal power profile directly from transmitted and received optical signals. These methods provide an attractive alternative to computationally intensive optimization-based approaches because the power profile can be obtained through a closed-form linear least-squares solution. However, their performance relies on an accurate knowledge of the linear fiber propagation model, in particular the chromatic dispersion (CD) parameter.\n\nIn practical systems, the dispersion parameter used by the receiver may deviate from its true value due to parameter uncertainty, calibration errors, or imperfect knowledge of the transmission link. Such a mismatch introduces an error in the reconstructed zeroth-order propagated signal. Consequently, the residual signal used to estimate the first-order nonlinear perturbation no longer contains only the nonlinear contribution, which can lead to a biased longitudinal power profile estimate.\n\nIn this project, we will investigate a robust extension of LLS-RP1 that jointly estimates the chromatic dispersion parameter and the fiber-longitudinal power profile. A key idea is to exploit the separable structure of the estimation problem using variable projection. For a given dispersion parameter, the longitudinal power profile can still be obtained analytically through linear least squares. The linear variables can therefore be eliminated from the optimization, reducing the original joint estimation problem to a low-dimensional nonlinear optimization over the dispersion parameter. After estimating the dispersion, the longitudinal power profile can be recalculated using the corresponding least-squares solution.\n\nThe project will study suitable objective functions and optimization algorithms for this variable-projection formulation and evaluate the robustness of the proposed method under different levels of CD mismatch, transmission distances, launch powers, noise levels, and spatial resolutions. The method will first be evaluated through numerical simulations and, depending on project progress, further validated using experimental coherent optical transmission data. The final goal is to understand whether joint dispersion and power-profile estimation can make LLS-based longitudinal monitoring more robust and practical for real optical fiber systems.",
+        
+            references: [
+                {
+                    label: "Takeo Sasai et al. Linear least squares estimation of fiber-longitudinal optical power profile. Journal of Lightwave Technology, 42(6), 1955–1965, 2024.",
+                    url: "https://ieeexplore.ieee.org/document/10297545"
+                }
+            ],
+        
+            supervisors: [
+                {
+                    name: "Christian Häger",
+                    role: "Associate Professor",
+                    email: "christian.haeger@chalmers.se"
+                },
+                {
+                    name: "Zicong Jiang",
+                    role: "PhD Candidate",
+                    email: "zicongj@chalmers.se"
+                }
+            ],
+        
+            contact: {
+                name: "Zicong Jiang",
+                email: "zicongj@chalmers.se",
+                note: "Please send your CV, transcript, and a short summary of your interests."
+            }
+        },
+        {
+            id: "thesis-3",
             type: "Master Thesis",
             status: "available",
-            year: "2027",
+            year: "2026",
             title: "TBD",
             term: "Spring / Fall semester 2027",
             location: "DDCS Lab, Chalmers",
@@ -989,7 +1026,7 @@ const thesisProjectsData = {
                 }
             ],
             contact: {
-                name: "DDCS Lab",
+                name: "MLC Lab",
                 email: "christian.haeger@chalmers.se",
                 note: "Contact us if you want to discuss related follow-up topics."
             }
@@ -1009,7 +1046,7 @@ const thesisProjectsData = {
                 }
             ],
             contact: {
-                name: "DDCS Lab",
+                name: "MLC Lab",
                 email: "zicongj@chalmers.se",
                 note: "We can share related background reading after an initial discussion."
             }
