@@ -159,7 +159,7 @@ const alumniData = [
     },
     {
         name: "Jun Cao",
-        role: "Research MSc Thesis (2025-2026) \n\n Examiner: Christian Häger\n\n Supervisor: Zicong Jiang\n\n Collaboration: Sam William O'Brien, Rick Butler, Magnus Karlsson",
+        role: "Research MSc Thesis (2025-2026)",
         destination: "PhD Student at Chalmers",
         link: "",
         type: "master"
