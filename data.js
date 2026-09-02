@@ -1,6 +1,6 @@
 /**
  * ==========================================
- * DDCS LAB WEBSITE DATA (CONTENT CONFIGURATION)
+ * MLC LAB WEBSITE DATA (CONTENT CONFIGURATION)
  * ==========================================
  * INSTRUCTIONS:
  * 1. This file contains all the text, links, and data for the website.
@@ -10,10 +10,10 @@
 
 // --- 1. GENERAL LAB INFO ---
 const labConfig = {
-    name: "DDCS Lab",
-    fullName: "Data-Driven Communication Systems Lab",
-    subText: "DDCS Laboratory, Chalmers University of Technology",
-    footerText: "© 2026 DDCS Lab. Chalmers University of Technology.",
+    name: "MLC Lab",
+    fullName: "Machine Learning for Communications Lab",
+    subText: "MLC Laboratory, Chalmers University of Technology",
+    footerText: "© 2026 MLC Lab. Chalmers University of Technology.",
     address: "Elektrogården 1, 41258 Göteborg, Sweden"
 };
 
@@ -33,22 +33,22 @@ const researchData = [
         abstract: "Optical signals accumulate the effects of fibre loss, chromatic dispersion, nonlinear propagation, and spatially varying link parameters as they travel through a transmission system. These physical effects are encoded in the received waveform and can therefore be used to infer properties of the transmission link. We develop physics-informed and data-driven models that incorporate prior knowledge of optical fibre propagation into the learning and inference process. By solving the resulting inverse problem, we aim to estimate longitudinally distributed fibre parameters and monitor how they vary along the link. This provides a framework for interpretable optical fibre modelling, longitudinal monitoring, and digital-twin-assisted diagnosis of optical transmission systems.",
         image: "https://caas.phoenixcontact.com/caas/v1/stable/media/75352/5x3/800?format=jpg"
     },
-    {
-        id: "isac",
-        icon: "cpu",
-        title: "topic 2",
-        desc: "some description here.",
-        abstract: "Details here.",
-        image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-        id: "ai4coding",
-        icon: "network",
-        title: "topic 3",
-        desc: "some description here.",
-        abstract: "Details here.",
-        image: "https://images.unsplash.com/photo-1655720828018-edd2daec9349?auto=format&fit=crop&q=80&w=800"
-    },
+    // {
+    //     id: "isac",
+    //     icon: "cpu",
+    //     title: "topic 2",
+    //     desc: "some description here.",
+    //     abstract: "Details here.",
+    //     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800"
+    // },
+    // {
+    //     id: "ai4coding",
+    //     icon: "network",
+    //     title: "topic 3",
+    //     desc: "some description here.",
+    //     abstract: "Details here.",
+    //     image: "https://images.unsplash.com/photo-1655720828018-edd2daec9349?auto=format&fit=crop&q=80&w=800"
+    // },
     {
         id: "earthquake_modelling",
         icon: "activity",
@@ -75,7 +75,7 @@ const teamData = [
         role: "Lab PI, Associate Professor",
         image: "images/christian.jpg", 
         email: "christian.haeger@chalmers.se",
-        linkedin: "https://www.linkedin.com/",
+        linkedin: "https://www.linkedin.com/in/christian-h%C3%A4ger-a0642429/",
         website: "https://chaeger.github.io/"
     },
     {
@@ -83,7 +83,7 @@ const teamData = [
         name: "Rick Butler",
         role: "Postdoc Researcher",
         image: "images/rick.jpg",
-        email: "xxx@chalmers.se",
+        email: "rick.butler@chalmers.se",
         linkedin: "",
         website: "" 
     },
@@ -120,7 +120,7 @@ const teamData = [
         role: "PhD Student",
         image: "images/jun.jpg",
         email: "junca@chalmers.se",
-        linkedin: "",
+        linkedin: "https://www.linkedin.com/in/juncaochalmers/",
         website: ""
     },
     {
@@ -136,48 +136,48 @@ const teamData = [
  * - type: 'phd', 'visiting', 'master', 'bachelor' (Must match these exactly for classification)
  */
 const alumniData = [
-    {
-        name: "xxx",
-        role: "PhD Graduate (20xx)",
-        destination: "xxx at xxx",
-        link: "https://linkedin.com",
-        type: "phd"
-    },
-    {
-        name: "xxx",
-        role: "Postdoc (20xx-20xx)",
-        destination: "xxxx",
-        link: "#",
-        type: "phd" // Grouping postdocs with PhDs or separate them if preferred
-    },
-    {
-        name: "xxx",
-        role: "Visiting Researcher (20xx)",
-        destination: "xxxx",
-        link: "#",
-        type: "visiting"
-    },
-    {
-        name: "Jun Cao",
-        role: "Research MSc Thesis (2025-2026)",
-        destination: "PhD Student at Chalmers",
-        link: "",
-        type: "master"
-    },
-    {
-        name: "Master Graduate xx",
-        role: "MSc Thesis (20xx)",
-        destination: "xxxx",
-        link: "",
-        type: "master"
-    },
-    {
-        name: "xxx",
-        role: "BSc Thesis (20xx)",
-        destination: "xxxx",
-        link: "",
-        type: "bachelor"
-    }
+    // {
+    //     name: "xxx",
+    //     role: "PhD Graduate (20xx)",
+    //     destination: "xxx at xxx",
+    //     link: "https://linkedin.com",
+    //     type: "phd"
+    // },
+    // {
+    //     name: "xxx",
+    //     role: "Postdoc (20xx-20xx)",
+    //     destination: "xxxx",
+    //     link: "#",
+    //     type: "phd" // Grouping postdocs with PhDs or separate them if preferred
+    // },
+    // {
+    //     name: "xxx",
+    //     role: "Visiting Researcher (20xx)",
+    //     destination: "xxxx",
+    //     link: "#",
+    //     type: "visiting"
+    // },
+    // {
+    //     name: "Jun Cao",
+    //     role: "Research MSc Thesis (2025-2026)",
+    //     destination: "PhD Student at Chalmers",
+    //     link: "",
+    //     type: "master"
+    // },
+    // {
+    //     name: "Master Graduate xx",
+    //     role: "MSc Thesis (20xx)",
+    //     destination: "xxxx",
+    //     link: "",
+    //     type: "master"
+    // },
+    // {
+    //     name: "xxx",
+    //     role: "BSc Thesis (20xx)",
+    //     destination: "xxxx",
+    //     link: "",
+    //     type: "bachelor"
+    // }
 ];
 
 // --- 4. PUBLICATIONS ---
@@ -808,8 +808,18 @@ const publicationsData = [
 // --- 5. NEWS & EVENTS ---
 const newsData = [
     {
-        id: 7,
+        id: 8,
         type: 'event',
+        year: '2026',
+        date: '1 September, 2026',
+        title: 'Congratulations to José Miguel Mateos Ramos for successfully defending his doctoral thesis',
+        desc: 'José Miguel Mateos Ramos successfully defended his doctoral thesis, "Machine Learning for Integrated Sensing and Communications under Modeling Mismatch". Congratulations, José!',
+        link: 'https://www.linkedin.com/posts/chalmerscomsys_congratulations-dr-jos%C3%A9-miguel-mateos-ramos-activity-7500573039244484608-Dzh5?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFOxNCcB63P7oMiMxiPvyJpxyTupPbQbSW4',
+        sourceLabel: 'View LinkedIn Post'
+    },
+    {
+        id: 7,
+        type: 'publication',
         year: '2026',
         date: '22 September, 2026',
         title: 'Rick presented two papers at the European Conference on Optical Communication',
@@ -878,32 +888,32 @@ const newsData = [
         link: 'https://www.chalmers.se/en/about-chalmers/work-with-us/vacancies/?rmpage=job&rmjob=14548&rmlang=UK',
         sourceLabel: 'View Vacancy Page'
     },
-    { 
-        id: 3, 
-        type: 'publication', 
-        year: '2025',
-        date: 'xxx xx, 20xx', 
-        title: 'Seminar on xxx', 
-        desc: 'xxx.',
-        body: [
-            'Write the full seminar description here.',
-            'This text will be shown inside the news modal when the user clicks the news title.'
-        ],
-        link: '' 
-    },
-    { 
-        id: 4, 
-        type: 'event', 
-        year: '2024',
-        date: 'xxx xx, 20xx', 
-        title: 'Received a Grant xxx', 
-        desc: 'xxx.',
-        body: [
-            'Write the full grant announcement here.',
-            'You can add one or more paragraphs depending on how much context you want to show in the modal.'
-        ],
-        link: '' 
-    }
+    // { 
+    //     id: 3, 
+    //     type: 'publication', 
+    //     year: '2025',
+    //     date: 'xxx xx, 20xx', 
+    //     title: 'Seminar on xxx', 
+    //     desc: 'xxx.',
+    //     body: [
+    //         'Write the full seminar description here.',
+    //         'This text will be shown inside the news modal when the user clicks the news title.'
+    //     ],
+    //     link: '' 
+    // },
+    // { 
+    //     id: 4, 
+    //     type: 'event', 
+    //     year: '2024',
+    //     date: 'xxx xx, 20xx', 
+    //     title: 'Received a Grant xxx', 
+    //     desc: 'xxx.',
+    //     body: [
+    //         'Write the full grant announcement here.',
+    //         'You can add one or more paragraphs depending on how much context you want to show in the modal.'
+    //     ],
+    //     link: '' 
+    // }
 ];
 
 // --- 6. JOBS, INTERNSHIPS & THESIS PROJECTS ---
@@ -1018,8 +1028,29 @@ const thesisProjectsData = {
         }
     ],
     past: [
-        {
+            {
             id: "past-1",
+            type: "Master Thesis",
+            year: "2025",
+            title: "Data-Driven Speech Recovery in a Fiber-Optic Polarization-Based Sensing System",
+            thesisLink: "https://odr.chalmers.se/items/f9319f21-1311-4506-bba8-e63a563bcab6",
+            description: "Optical fibers are inherently sensitive to external acoustic vibrations, which can modulate the local birefringence via the elasto-optic effect, imposing perturbations onto the state of polarization (SOP) of the transmitted light. This creates an unintended sensing channel: for example, speech spoken near the fiber may leak into the SOP trajectory and can potentially be recovered by an eavesdropper. This thesis develops, analyzes, and validates a speech recovery framework that operates directly on SOP obtained from the output of a fiber link.",
+            author: "Jun Cao",
+            supervisors: [
+                {
+                    name: "Zicong Jiang",
+                    role: "PhD Candidate",
+                    email: "zicongj@chalmers.se"
+                }
+            ],
+            contact: {
+                name: "MLC Lab",
+                email: "zicongj@chalmers.se",
+                note: "We can share related background reading after an initial discussion."
+            }
+        },
+        {
+            id: "past-2",
             type: "Master Thesis",
             year: "2025",
             title: "Channel Charting...",
@@ -1036,26 +1067,6 @@ const thesisProjectsData = {
                 name: "MLC Lab",
                 email: "christian.haeger@chalmers.se",
                 note: "Contact us if you want to discuss related follow-up topics."
-            }
-        },
-        {
-            id: "past-2",
-            type: "Master Thesis",
-            year: "2025",
-            title: "Data-Driven Event Detection in Fiber Sensing",
-            thesisLink: "https://odr.chalmers.se/",
-            description: "A short thesis on machine-learning pipelines for event detection in distributed fiber sensing data.",
-            supervisors: [
-                {
-                    name: "Zicong Jiang",
-                    role: "PhD Candidate",
-                    email: "zicongj@chalmers.se"
-                }
-            ],
-            contact: {
-                name: "MLC Lab",
-                email: "zicongj@chalmers.se",
-                note: "We can share related background reading after an initial discussion."
             }
         }
     ]
@@ -1367,16 +1378,16 @@ const talksData = {
 const galleryData = [
     {
         id: 1,
-        image: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80&w=1200",
-        title: "Optical Lab Setup",
-        date: "2025-05-20",
-        location: "Lab Room 301"
+        image: "images/fiberlab.jpg",
+        title: "Optical Lab",
+        date: "2026-01-12",
+        location: "MC2 Department, Fiber Lab"
     },
-    {
-        id: 2,
-        image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=1200",
-        title: "Server Room Analysis",
-        date: "2025-06-15",
-        location: "Data Center"
-    }
+    // {
+    //     id: 2,
+    //     image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=1200",
+    //     title: "Server Room Analysis",
+    //     date: "2025-06-15",
+    //     location: "Data Center"
+    // }
 ];
