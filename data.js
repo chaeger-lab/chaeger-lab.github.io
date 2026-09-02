@@ -26,12 +26,12 @@ const labConfig = {
  */
 const researchData = [
     {
-        id: "oisac",
-        icon: "brain", // Lucide icon name
-        title: "topic 1",
-        desc: "some description here",
-        abstract: "Details here.",
-        image: "https://images.unsplash.com/photo-1655720828018-edd2daec9349?auto=format&fit=crop&q=80&w=800"
+        id: "OPM",
+        icon: "spotlight", // Lucide icon name
+        title: "Physics-informed optical fiber modeling and longitudinal monitoring",
+        desc: "We combine physics-informed modelling with data-driven inference to build optical fibre models and estimate longitudinal variations of fibre parameters from end-to-end measurements.",
+        abstract: "Optical signals accumulate the effects of fibre loss, chromatic dispersion, nonlinear propagation, and spatially varying link parameters as they travel through a transmission system. These physical effects are encoded in the received waveform and can therefore be used to infer properties of the transmission link. We develop physics-informed and data-driven models that incorporate prior knowledge of optical fibre propagation into the learning and inference process. By solving the resulting inverse problem, we aim to estimate longitudinally distributed fibre parameters and monitor how they vary along the link. This provides a framework for interpretable optical fibre modelling, longitudinal monitoring, and digital-twin-assisted diagnosis of optical transmission systems.",
+        image: "https://caas.phoenixcontact.com/caas/v1/stable/media/75352/5x3/800?format=jpg"
     },
     {
         id: "isac",
@@ -90,7 +90,7 @@ const teamData = [
     {
         id: "phd1",
         name: "José Miguel Mateos Ramos",
-        role: "PhD Candidate",
+        role: "PhD Student",
         image: "images/jose_ramos.jpg",
         email: "josemi@chalmers.se",
         linkedin: "https://www.linkedin.com/in/jmateosramos/",
@@ -99,7 +99,7 @@ const teamData = [
     {
         id: "phd2",
         name: "Bingcheng Chen",
-        role: "PhD Candidate",
+        role: "PhD Student",
         image: "images/bingcheng.png",
         email: "charlie@chalmers.se",
         linkedin: "",
@@ -108,7 +108,7 @@ const teamData = [
     {
         id: "phd3",
         name: "Zicong Jiang",
-        role: "PhD Candidate",
+        role: "PhD Student",
         image: "images/zicong.jpeg",
         email: "zicongj@chalmers.se",
         linkedin: "",
@@ -117,7 +117,7 @@ const teamData = [
     {
         id: "master1",
         name: "Jun Cao",
-        role: "Master student",
+        role: "PhD Student",
         image: "images/jun.jpg",
         email: "junca@chalmers.se",
         linkedin: "",
