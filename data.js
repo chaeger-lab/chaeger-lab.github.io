@@ -158,6 +158,13 @@ const alumniData = [
         type: "visiting"
     },
     {
+        name: "Jun Cao",
+        role: "Research MSc Thesis (2025-2026)",
+        destination: "PhD Student (Chalmers)\n\n Examiner: Christian Häger\n\n Supervisor: Zicong Jiang\n\n Collaboration: Sam William O'Brien, Rick Butler, Magnus Karlsson",
+        link: "",
+        type: "master"
+    },
+    {
         name: "Master Graduate xx",
         role: "MSc Thesis (20xx)",
         destination: "xxxx",
