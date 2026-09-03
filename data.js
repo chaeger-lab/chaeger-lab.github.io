@@ -144,13 +144,13 @@ const teamData = [
  * - type: 'phd', 'visiting', 'master', 'bachelor' (Must match these exactly for classification)
  */
 const alumniData = [
-    // {
-    //     name: "xxx",
-    //     role: "PhD Graduate (20xx)",
-    //     destination: "xxx at xxx",
-    //     link: "https://linkedin.com",
-    //     type: "phd"
-    // },
+    {
+        name: "Alex Rex",
+        role: "MSc Thesis (2024)",
+        destination: "",
+        link: "",
+        type: "master"
+    },
     // {
     //     name: "xxx",
     //     role: "Postdoc (20xx-20xx)",
