@@ -71,7 +71,7 @@ const researchData = [
         title: "Channel-Charting-Based Positioning",
         desc: "We develop machine learning frameworks for positioning without collecting labeled data.",
         abstract: "Channel charting (CC) is a dimensionality reduction technique that maps the high-dimensional channel state information to a lower-dimensional position estimation without labeled data. Convetional CC techniques do not provide estimated positions in the true coordinate system of the environment. Our vision is to develop machine learning frameworks that provide better positioning performance in the true coordinate system.",
-        image: "https://images.unsplash.com/photo-1714255288526-cc155b548aac?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        image: "https://plus.unsplash.com/premium_photo-1723651354432-7796fb4ecebc?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
 ];
 
