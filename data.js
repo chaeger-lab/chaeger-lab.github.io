@@ -65,6 +65,14 @@ const researchData = [
         abstract: "Integrated sensing and communication (ISAC) is expected to be one of the pillars of 6G networks. Endowing communication networks with sensing capabilities is expected to increase the carrier frequency of ISAC systems, which increases the likelihood of hardware impairments. Impairments degrade sensing and communication performance. We design data-driven approaches that calibrate ISAC systems while their operations are unchanged. Moreover, by exploiting the structure of the received signal, we expect to calibrate the ISAC system without sensing labeled data.",
         image: "https://images.unsplash.com/photo-1714255288526-cc155b548aac?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
+    {
+        id: "channel_charting",
+        icon: "map-pinned",
+        title: "Channel-Charting-Based Positioning",
+        desc: "We develop machine learning frameworks for positioning without collecting labeled data.",
+        abstract: "Channel charting (CC) is a dimensionality reduction technique that maps the high-dimensional channel state information to a lower-dimensional position estimation without labeled data. Convetional CC techniques do not provide estimated positions in the true coordinate system of the environment. Our vision is to develop machine learning frameworks that provide better positioning performance in the true coordinate system.",
+        image: "https://images.unsplash.com/photo-1714255288526-cc155b548aac?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
 ];
 
 // --- 3. TEAM MEMBERS (PEOPLE) ---
