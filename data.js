@@ -34,14 +34,6 @@ const researchData = [
         image: "https://caas.phoenixcontact.com/caas/v1/stable/media/75352/5x3/800?format=jpg"
     },
     // {
-    //     id: "isac",
-    //     icon: "cpu",
-    //     title: "topic 2",
-    //     desc: "some description here.",
-    //     abstract: "Details here.",
-    //     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800"
-    // },
-    // {
     //     id: "ai4coding",
     //     icon: "network",
     //     title: "topic 3",
@@ -64,7 +56,15 @@ const researchData = [
         desc: "We monitor the polarisation of light at the receiver to localise mechanical events that happen along an optical fibre.",
         abstract: "The state of polarisation (SOP) of light propagating through an optical fibre is affected by the shape of the fibre cross-section. Nearby mechanical events change the cross-section or twist the fibre, modulating the SOP. These modulations can be detected at the receiver. Using the concept that the propagation speed of light is frequency-dependent (chromatic dispersion), we can localise fibre perturbations by monitoring SOP fluctuations at the receiver.",
         image: "https://images.unsplash.com/photo-1671669648501-9830777da04c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    }
+    },
+    {
+        id: "isac",
+        icon: "radar",
+        title: "Calibration for Integrated Sensing and Communication",
+        desc: "We design data-driven calibration approaches for calibration of Integrated Sensing and Communication systems.",
+        abstract: "Integrated sensing and communication (ISAC) is expected to be one of the pillars of 6G networks. Endowing communication networks with sensing capabilities is expected to increase the carrier frequency of ISAC systems, which increases the likelihood of hardware impairments. Impairments degrade sensing and communication performance. We design data-driven approaches that calibrate ISAC systems while their operations are unchanged. Moreover, by exploiting the structure of the received signal, we expect to calibrate the ISAC system without sensing labeled data.",
+        image: "https://images.unsplash.com/photo-1714255288526-cc155b548aac?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
 ];
 
 // --- 3. TEAM MEMBERS (PEOPLE) ---
