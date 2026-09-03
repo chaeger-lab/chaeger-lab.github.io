@@ -145,8 +145,50 @@ const teamData = [
  */
 const alumniData = [
     {
+        name: "Philip Corsénsus",
+        role: "BSc Thesis (2026)",
+        destination: "",
+        link: "",
+        type: "bachelor"
+    },
+    {
+        name: "Victor Jordansson",
+        role: "BSc Thesis (2026)",
+        destination: "",
+        link: "",
+        type: "bachelor"
+    },
+    {
+        name: "Max Monastyrski",
+        role: "BSc Thesis (2026)",
+        destination: "",
+        link: "",
+        type: "bachelor"
+    },
+    {
+        name: "Isac Nilsson",
+        role: "BSc Thesis (2026)",
+        destination: "",
+        link: "",
+        type: "bachelor"
+    },
+    {
         name: "Alex Rex",
         role: "MSc Thesis (2024)",
+        destination: "",
+        link: "",
+        type: "master"
+    },
+    {
+        name: "Leon Janetzko",
+        role: "MSc Thesis (2024)",
+        destination: "",
+        link: "",
+        type: "master"
+    },
+    {
+        name: "Gitanjali Raghu",
+        role: "MSc Thesis (2023)",
         destination: "",
         link: "",
         type: "master"
