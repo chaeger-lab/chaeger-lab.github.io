@@ -61,16 +61,16 @@ const researchData = [
         id: "isac",
         icon: "radar",
         title: "Calibration for Integrated Sensing and Communication",
-        desc: "We design data-driven calibration approaches for calibration of Integrated Sensing and Communication systems.",
-        abstract: "Integrated sensing and communication (ISAC) is expected to be one of the pillars of 6G networks. Endowing communication networks with sensing capabilities is expected to increase the carrier frequency of ISAC systems, which increases the likelihood of hardware impairments. Impairments degrade sensing and communication performance. We design data-driven approaches that calibrate ISAC systems while their operations are unchanged. Moreover, by exploiting the structure of the received signal, we expect to calibrate the ISAC system without sensing labeled data.",
+        desc: "We develop data-driven calibration approaches for Integrated Sensing and Communication (ISAC) systems.",
+        abstract: "Integrated sensing and communication (ISAC) is expected to be one of the key pillars of 6G networks. By endowing communication systems with sensing capabilities, ISAC is likely to operate at increasingly higher carrier frequencies, where hardware impairments become more pronounced. These impairments can significantly degrade both sensing and communication performance. We develop data-driven approaches to calibrate ISAC systems without altering their normal operation. Furthermore, by exploiting the inherent structure of the received signal, we aim to enable calibration without requiring labeled sensing data.",
         image: "https://images.unsplash.com/photo-1714255288526-cc155b548aac?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
         id: "channel_charting",
         icon: "map-pinned",
         title: "Channel-Charting-Based Positioning",
-        desc: "We develop machine learning frameworks for positioning without collecting labeled data.",
-        abstract: "Channel charting (CC) is a dimensionality reduction technique that maps the high-dimensional channel state information to a lower-dimensional position estimation without labeled data. Convetional CC techniques do not provide estimated positions in the true coordinate system of the environment. Our vision is to develop machine learning frameworks that provide better positioning performance in the true coordinate system.",
+        desc: "We develop machine learning frameworks for data-efficient positioning that eliminate the need for labeled training data.",
+        abstract: "Channel charting (CC) is a dimensionality reduction technique that maps high-dimensional channel state information (CSI) to a lower-dimensional representation of the underlying physical positions without requiring labeled data. However, conventional CC techniques do not provide position estimates in the true coordinate system of the environment. Our vision is to develop machine learning frameworks that overcome this limitation and enable accurate positioning directly in the true coordinate system, while maintaining the label-free nature of channel charting.",
         image: "https://plus.unsplash.com/premium_photo-1723651354432-7796fb4ecebc?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
 ];
