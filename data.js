@@ -912,6 +912,74 @@ const publicationsData = [
 // --- 5. NEWS & EVENTS ---
 const newsData = [
     {
+        id: 13,
+        type: 'publication',
+        year: '2026',
+        date: '8 August, 2026',
+        title: 'A paper from José has been accepted at IEEE TWC',
+        body: [
+            'The paper entitled "Positioning via digital-twin-aided channel charting with large-scale CSI features" has been accepted in IEEE Transactions on Wireless Communications. Congratulations José!',
+        ],
+        link: 'https://research.chalmers.se/en/publication/549625',
+        sourceLabel: 'View Paper'
+    },
+    {
+        id: 12,
+        type: 'publication',
+        year: '2024',
+        date: '18 December, 2024',
+        title: 'A paper from José has been accepted at IEEE TWC',
+        body: [
+            'The paper entitled "Model-based end-to-end learning for multi-target integrated sensing and communication" has been accepted in IEEE Transactions on Wireless Communications. Congratulations José!',
+        ],
+        link: 'https://research.chalmers.se/en/publication/545794',
+        sourceLabel: 'View Paper'
+    },
+    {
+        id: 11,
+        type: 'publication',
+        year: '2024',
+        date: '20 December, 2024',
+        title: 'A paper from José has been accepted at the IEEE ICASSP Conference',
+        body: [
+            'The paper entitled "Unsupervised Learning for Gain-Phase Impairment Calibration in ISAC Systems" has been accepted for the oral presentation at the IEEE ICASSP conference, which will be held in Hyderabad, April 6-11, 2025. Congratulations José!',
+        ]
+    },
+    {
+        id: 11,
+        type: 'event',
+        year: '2025',
+        date: '12 May, 2025',
+        title: 'José has received two funding grants',
+        body: [
+            'José has received 30,000 SEK from the Ericsson Research foundation and 24,000 SEK from the "S.o.KG. Eliassons minnes- och tilläggsfonder" to support his trip to the IEEE ICASSP conference in Hyderabad, India. Congratulations José!',
+        ]
+    },
+    {
+        id: 10,
+        type: 'event',
+        year: '2026',
+        date: '1 June, 2026',
+        title: 'José has received two funding grants',
+        body: [
+            'José has received 50,000 SEK from the "Stiftelsen Wilhelm och Martina Lundgrens Vetenskapsfond" and 10,000 SEK from the "S.o.KG. Eliassons minnes- och tilläggsfonder" to support his research visit at TU Vienna. Congratulations José!',
+        ]
+    },
+    {
+        id: 9,
+        type: 'event',
+        year: '2025',
+        date: '30 June, 2025',
+        title: 'José finished a research visit to ETH Zürich',
+        body: [
+            'José has returned from ETH Zürich after a five-and-a-half-month research visit with Prof. Christoph Studer at the Department of Information Technology and Electrical Engineering.',
+            'During the visit, José worked on digital-twin-aided channel charting for positioning, a novel approach for estimating the position of users in indoor environments without the need for a measurement campaign to collect labeled data.',
+            'Welcome back, José!'
+        ],
+        link: 'https://www.linkedin.com/posts/jmateosramos_ethzurich-iis-iip-activity-7346206154508632066-H2YL?utm_source=share&utm_medium=member_desktop&rcm=ACoAADLuK2UBrXe3c8dXKzZaAMf2Le_X2fYEBIM',
+        sourceLabel: 'View LinkedIn Post'
+    },
+    {
         id: 8,
         type: 'event',
         year: '2026',
