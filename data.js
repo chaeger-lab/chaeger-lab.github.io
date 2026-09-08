@@ -256,7 +256,7 @@ const publicationsData = [
         year: "2023",
         title: "Model-Based End-to-End Learning for Multi-Target Integrated Sensing and Communication Under Hardware Impairments",
         authors: "José Miguel Mateos-Ramos, Christian Häger, Musa Furkan Keskin, Luc Le Magoarou, and Henk Wymeersch",
-        source: "EEE Transactions on Wireless Communications, vol. 24, no. 3, pp. 2574-2589, March 2025",
+        source: "IEEE Transactions on Wireless Communications, vol. 24, no. 3, pp. 2574-2589, March 2025",
         link: "https://research.chalmers.se/en/publication/545794"
     },
     {
