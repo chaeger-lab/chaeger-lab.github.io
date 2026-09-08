@@ -254,10 +254,10 @@ const publicationsData = [
         id: 3,
         type: "journal",
         year: "2023",
-        title: "Model-Based End-to-End Learning for Multi-Target Integrated Sensing and Communication",
+        title: "Model-Based End-to-End Learning for Multi-Target Integrated Sensing and Communication Under Hardware Impairments",
         authors: "José Miguel Mateos-Ramos, Christian Häger, Musa Furkan Keskin, Luc Le Magoarou, and Henk Wymeersch",
-        source: "submitted to JSTSP",
-        link: "http://arxiv.org/abs/2307.04111"
+        source: "EEE Transactions on Wireless Communications, vol. 24, no. 3, pp. 2574-2589, March 2025",
+        link: "https://research.chalmers.se/en/publication/545794"
     },
     {
         id: 4,
@@ -454,8 +454,8 @@ const publicationsData = [
         year: "2024",
         title: "Semi-Supervised End-to-End Learning for Integrated Sensing and Communications",
         authors: "José Miguel Mateos-Ramos, Baptiste Chatelier, Christian Häger, Musa Furkan Keskin, Luc Le Magoarou, and Henk Wymeersch",
-        source: "Proc. Int. Conf. Mach. Learning for Communication and Networking (ICMLCN) [to Be Presented], Stockholm, Sweden",
-        link: "http://arxiv.org/abs/2310.09940"
+        source: "Proc. Int. Conf. Mach. Learning for Communication and Networking (ICMLCN), Stockholm, Sweden, 2024, pp. 132-138",
+        link: "https://research.chalmers.se/en/publication/542645"
     },
     {
         id: 26,
@@ -852,6 +852,60 @@ const publicationsData = [
         authors: "Lampros Lanaras, Rick M. Butler, Christian Häger, Alex Alvarado",
         source: "Eur. Conf. Opt. Commun.",
         link: "https://arxiv.org/abs/2608.02872"
+    },
+    {
+        id: 70,
+        type: "journal",
+        year: "2026",
+        title: "Positioning via Digital-Twin-Aided Channel Charting with Large-Scale CSI Features",
+        authors: "José Miguel Mateos Ramos, Frederik Zumegen, Henk Wymeersch, Christian Häger, Christoph Studer",
+        source: "IEEE Transactions on Wireless Communications, vol. 25, pp. 22245-22260, 2026",
+        link: "https://research.chalmers.se/en/publication/549625"
+    },
+    {
+        id: 71,
+        type: "journal",
+        year: "2026",
+        title: "Unsupervised End-to-End Array Calibration for Multi-Target Integrated Sensing and Communication",
+        authors: "José Miguel Mateos Ramos, Baptiste Chatelier, Luc Le Magoarou, Nir Shlezinger, Henk Wymeersch, Christian Häger",
+        source: "submitted to IEEE Transactions on Wireless Communications",
+        link: "https://arxiv.org/abs/2604.00806"
+    },
+    {
+        id: 72,
+        type: "journal",
+        year: "2026",
+        title: "Integrated Radio Sensing Capabilities for 6G Networks: AI/ML Perspective",
+        authors: "Victor Shatov, Steffen Schieler, Charlotte Muth, José Miguel Mateos-Ramos, Ivo Bizon, Florian Euchner, Sebastian Semper, Stephan Ten Brink, Gerhard Fettweis, Christian Häger, Henk Wymeersch, Laurent Schmalen, Reiner Thomä, Norman Franchi",
+        source: "IEEE Communications Surveys & Tutorials, vol. 28, pp. 5081-5120, Feb. 2026",
+        link: "https://research.chalmers.se/en/publication/551083"
+    },
+    {
+        id: 73,
+        type: "conference",
+        year: "2025",
+        title: "End-to-End Learning for RIS Profile Design and Channel Parameter Estimation under Pixel Failures",
+        authors: "Mehmet C Ilter, Musa Furkan Keskin, José Miguel Mateos-Ramos, Christian Häger, Mikko Valkama, Henk Wymeersch",
+        source: "IEEE Veh. Techn. Conf. (VTC2025-Spring), Oslo, Norway, 2025, pp. 1-7",
+        link: "https://research.chalmers.se/en/publication/551421"
+    },
+    {
+        id: 74,
+        type: "conference",
+        year: "2025",
+        title: "Physically Parameterized Differentiable MUSIC for DoA Estimation with Uncalibrated Arrays",
+        authors: "Baptiste Chatelier, José Miguel Mateos-Ramos, Vincent Corlay, Christian Häger, Matthieu Crussière, Henk Wymeersch, Luc Le Magoarou",
+        source: "IEEE Int. Conf. Commun., Montreal, QC, Canada, 2025, pp. 3858-3863",
+        link: "https://research.chalmers.se/en/publication/548756"
+    },
+    {
+        id: 75,
+        type: "conference",
+        year: "2025",
+        title: "Unsupervised Learning for Gain-Phase Impairment Calibration in ISAC Systems",
+        authors: "José Miguel Mateos-Ramos, Christian Häger, Musa Furkan Keskin, Luc Le Magoarou, Henk Wymeersch",
+        source: "IEEE Int. Conf. Acoustics, Speech Signal Process. (ICASSP), Hyderabad, India, 2025, pp. 1-5",
+        link: "https://research.chalmers.se/en/publication/550765"
     }
 ];
 
