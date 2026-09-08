@@ -877,7 +877,7 @@ const publicationsData = [
         year: "2026",
         title: "Integrated Radio Sensing Capabilities for 6G Networks: AI/ML Perspective",
         authors: "Victor Shatov, Steffen Schieler, Charlotte Muth, José Miguel Mateos-Ramos, Ivo Bizon, Florian Euchner, Sebastian Semper, Stephan Ten Brink, Gerhard Fettweis, Christian Häger, Henk Wymeersch, Laurent Schmalen, Reiner Thomä, Norman Franchi",
-        source: "IEEE Communications Surveys & Tutorials, vol. 28, pp. 5081-5120, Feb. 2026",
+        source: "IEEE Communications Surveys & Tutorials, vol. 28, pp. 5081-5120",
         link: "https://research.chalmers.se/en/publication/551083"
     },
     {
