@@ -912,6 +912,28 @@ const publicationsData = [
 // --- 5. NEWS & EVENTS ---
 const newsData = [
     {
+        id: 15,
+        type: 'publication',
+        year: '2023',
+        date: '16 December, 2023',
+        title: 'A paper from José has been accepted at IEEE ICMLCN',
+        body: [
+            'The paper entitled "Semi-Supervised End-to-End Learning for Integrated Sensing and Communications" has been accepted in IEEE International Conference on Machine Learning for Communication and Networking, which will be held in Stockholm, May 5-8, 2024. Congratulations José!',
+        ],
+        link: 'https://research.chalmers.se/en/publication/542645',
+        sourceLabel: 'View Paper'
+    },
+    {
+        id: 14,
+        type: 'event',
+        year: '2024',
+        date: '22 May, 2024',
+        title: 'José has received three funding grants',
+        body: [
+            'José has received 150,000 SEK from the Ericsson Research foundation and 20,000 SEK from the "S.o.KG. Eliassons minnes- och tilläggsfonder" and 15,000 SEK from the "Wilhelm & Martina Lundgrens Vetenskapsfond" to support his research visit to ETH Zürich. Congratulations José!',
+        ]
+    },
+    {
         id: 13,
         type: 'publication',
         year: '2026',
