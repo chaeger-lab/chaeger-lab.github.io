@@ -1187,38 +1187,6 @@ const thesisProjectsData = {
                 email: "zicongj@chalmers.se",
                 note: "Please send your CV, transcript, and a short summary of your interests."
             }
-        },
-        {
-            id: "thesis-3",
-            type: "Master Thesis",
-            status: "available",
-            year: "2026",
-            title: "TBD",
-            term: "Spring / Fall semester 2027",
-            location: "DDCS Lab, Chalmers",
-            description: "Explore how machine learning can be used for monitoring, diagnosis, and adaptation in optical communication systems. The scope can be tuned toward simulations, data analysis, or model development.",
-            references: [
-                {
-                    label: "DDCS Lab Website",
-                    url: "https://chaeger-lab.github.io/"
-                },
-                {
-                    label: "Chalmers University of Technology",
-                    url: "https://www.chalmers.se/en/"
-                }
-            ],
-            supervisors: [
-                {
-                    name: "TBD",
-                    role: "Associate Professor",
-                    email: "christian.haeger@chalmers.se"
-                }
-            ],
-            contact: {
-                name: "TBD",
-                email: "christian.haeger@chalmers.se",
-                note: "Students with backgrounds in communication systems, machine learning, or applied mathematics are welcome."
-            }
         }
     ],
     past: [
@@ -1241,26 +1209,6 @@ const thesisProjectsData = {
                 name: "MLC Lab",
                 email: "zicongj@chalmers.se",
                 note: "We can share related background reading after an initial discussion."
-            }
-        },
-        {
-            id: "past-2",
-            type: "Master Thesis",
-            year: "2025",
-            title: "Channel Charting...",
-            thesisLink: "https://odr.chalmers.se/",
-            description: "A brief study of neural-network-based equalization strategies for short-reach optical links.",
-            supervisors: [
-                {
-                    name: "Christian Häger",
-                    role: "Associate Professor",
-                    email: "christian.haeger@chalmers.se"
-                }
-            ],
-            contact: {
-                name: "MLC Lab",
-                email: "christian.haeger@chalmers.se",
-                note: "Contact us if you want to discuss related follow-up topics."
             }
         }
     ]

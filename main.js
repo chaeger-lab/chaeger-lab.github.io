@@ -318,6 +318,19 @@ function getNewsYear(news) {
     return extractYearLabel(news.year || news.date, 'Archived');
 }
 
+function getNewsTimestamp(news) {
+    const parsed = Date.parse(news.date);
+    if (!Number.isNaN(parsed)) return parsed;
+
+    // Fallback for missing/unparseable dates: sort by year only, placed after dated items in that year.
+    const yearNumber = Number.parseInt(news.year, 10);
+    return Number.isFinite(yearNumber) ? new Date(yearNumber, 0, 1).getTime() : -Infinity;
+}
+
+function sortNewsByDateDesc(items) {
+    return [...items].sort((a, b) => getNewsTimestamp(b) - getNewsTimestamp(a));
+}
+
 function getNewsTypeLabel(type) {
     return type && type.trim() ? type : 'news';
 }
@@ -429,7 +442,7 @@ function renderHomeNews() {
 
     container.innerHTML = '';
 
-    newsData.slice(0, 10).forEach(news => {
+    sortNewsByDateDesc(newsData).slice(0, 10).forEach(news => {
         const el = document.createElement('div');
         el.className = 'p-4 hover:bg-slate-50 transition-colors cursor-pointer group border-l-2 border-transparent hover:border-blue-500';
         el.onclick = () => openNewsModal(news);
@@ -452,7 +465,7 @@ function renderNews() {
 
     container.innerHTML = '';
 
-    const groupedNews = groupItemsByYear(newsData, getNewsYear);
+    const groupedNews = groupItemsByYear(sortNewsByDateDesc(newsData), getNewsYear);
     pruneExpandedYears(expandedNewsYears, groupedNews);
     if (!hasInitializedNewsYears) {
         ensureDefaultExpandedYear(expandedNewsYears, groupedNews);
