@@ -131,11 +131,11 @@ const teamData = [
         linkedin: "https://www.linkedin.com/in/juncaochalmers/",
         website: ""
     },
-    {
-        id: "intern1",
-        name: "Xuchen Zhu",
-        role: "Intern"
-    }
+    // {
+    //     id: "intern1",
+    //     name: "Xuchen Zhu",
+    //     role: "Intern"
+    // }
 ];
 
 // --- 3.1 ALUMNI ---
