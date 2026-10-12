@@ -1081,8 +1081,16 @@ const newsData = [
             'His own paper: "End-to-End Modelling of Earthquake-Induced Polarisation Perturbations in Submarine Optical Fibres" was presented on Tuesday (the 22nd), and nominated for the best senior paper award.',
             'The paper by his student Lampros Lanaras was presented one day later at the poster session!',
         ],
-        link: 'https://arxiv.org/abs/2608.11903v1',
-        sourceLabel: 'View Paper'
+        links: [
+            {
+                label: 'Rick\'s Paper',
+                url: 'https://doi.org/10.48550/arXiv.2608.11903'
+            },
+            {
+                label: 'Lampros\'s Paper',
+                url: 'https://doi.org/10.48550/arXiv.2608.02872'
+            }
+        ],
     },
     {
         id: 15,
