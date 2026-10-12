@@ -1096,19 +1096,19 @@ const newsData = [
     },
     { 
         id: 16, 
-        type: 'award', 
+        type: 'event', 
         year: '2026',
-        date: '24 September, 2026',
-        title: 'Test', 
+        date: '24 October, 2026',
+        title: 'Template', 
         desc: 'xxx.',
         body: [
-            'Write the full grant announcement here.',
+            'Write the full text here.',
             'You can add one or more paragraphs depending on how much context you want to show in the modal.'
         ],
         links: [
         {
             label: 'View Paper',
-            url: 'https://research.chalmers.se/publication/542645'
+            url: 'https://research.chalmers.se/publication'
         },
         {
             label: 'View Slides',
