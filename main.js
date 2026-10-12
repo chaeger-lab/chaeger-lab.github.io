@@ -395,11 +395,11 @@ function openNewsModal(news) {
         link.removeAttribute('href');
         link.classList.add('hidden');
     }
-    // const links = news.links || (
-    //     news.link
-    //         ? [{ url: news.link, label: news.sourceLabel }]
-    //         : []
-    // );
+    const links = news.links || (
+        news.link
+            ? [{ url: news.link, label: news.sourceLabel }]
+            : []
+    );
     
     // linksContainer.innerHTML = '';
     
