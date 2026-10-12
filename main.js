@@ -368,8 +368,9 @@ function openNewsModal(news) {
     const date = document.getElementById('news-modal-date');
     const type = document.getElementById('news-modal-type');
     const body = document.getElementById('news-modal-body');
-    const link = document.getElementById('news-modal-link');
-    const linkLabel = document.getElementById('news-modal-link-label');
+    // const link = document.getElementById('news-modal-link');
+    // const linkLabel = document.getElementById('news-modal-link-label');
+    const linksContainer = document.getElementById('news-modal-links');
 
     if (!modal || !news) return;
 
@@ -386,14 +387,42 @@ function openNewsModal(news) {
         body.appendChild(item);
     });
 
-    if (news.link) {
-        link.href = news.link;
-        link.classList.remove('hidden');
-        linkLabel.textContent = news.sourceLabel || 'View Source';
-    } else {
-        link.removeAttribute('href');
-        link.classList.add('hidden');
-    }
+    // if (news.link) {
+    //     link.href = news.link;
+    //     link.classList.remove('hidden');
+    //     linkLabel.textContent = news.sourceLabel || 'View Source';
+    // } else {
+    //     link.removeAttribute('href');
+    //     link.classList.add('hidden');
+    // }
+
+    const links = Array.isArray(news.links)
+        ? news.links
+        : news.link
+            ? [{ url: news.link, label: news.sourceLabel }]
+            : [];
+
+    linksContainer.replaceChildren();
+
+    links.forEach(item => {
+        if (!item.url) return;
+
+        const anchor = document.createElement('a');
+        anchor.href = item.url;
+        anchor.target = '_blank';
+        anchor.rel = 'noopener noreferrer';
+        anchor.className = 'inline-flex items-center justify-center gap-2 px-5 py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl transition-colors';
+
+        const label = document.createElement('span');
+        label.textContent = item.label || 'View Source';
+
+        const icon = document.createElement('i');
+        icon.setAttribute('data-lucide', 'external-link');
+        icon.className = 'w-4 h-4';
+
+        anchor.append(label, icon);
+        linksContainer.appendChild(anchor);
+    });
 
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
