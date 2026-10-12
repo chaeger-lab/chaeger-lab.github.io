@@ -1220,7 +1220,7 @@ const thesisProjectsData = {
                 },
                 {
                     name: "Zicong Jiang",
-                    role: "PhD Candidate",
+                    role: "PhD Student",
                     email: "zicongj@chalmers.se"
                 }
             ],
@@ -1244,7 +1244,7 @@ const thesisProjectsData = {
             supervisors: [
                 {
                     name: "Zicong Jiang",
-                    role: "PhD Candidate",
+                    role: "PhD Student",
                     email: "zicongj@chalmers.se"
                 }
             ],
