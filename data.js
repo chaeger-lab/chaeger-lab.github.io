@@ -912,7 +912,7 @@ const publicationsData = [
 // --- 5. NEWS & EVENTS ---
 const newsData = [
     {
-        id: 15,
+        id: 1,
         type: 'publication',
         year: '2023',
         date: '16 December, 2023',
@@ -924,7 +924,7 @@ const newsData = [
         sourceLabel: 'View Paper'
     },
     {
-        id: 14,
+        id: 2,
         type: 'event',
         year: '2024',
         date: '22 May, 2024',
@@ -934,19 +934,7 @@ const newsData = [
         ]
     },
     {
-        id: 13,
-        type: 'publication',
-        year: '2026',
-        date: '8 August, 2026',
-        title: 'A paper from José has been accepted at IEEE TWC',
-        body: [
-            'The paper entitled "Positioning via digital-twin-aided channel charting with large-scale CSI features" has been accepted in IEEE Transactions on Wireless Communications. Congratulations José!',
-        ],
-        link: 'https://research.chalmers.se/en/publication/549625',
-        sourceLabel: 'View Paper'
-    },
-    {
-        id: 12,
+        id: 3,
         type: 'publication',
         year: '2024',
         date: '18 December, 2024',
@@ -958,7 +946,7 @@ const newsData = [
         sourceLabel: 'View Paper'
     },
     {
-        id: 11,
+        id: 4,
         type: 'publication',
         year: '2024',
         date: '20 December, 2024',
@@ -968,7 +956,7 @@ const newsData = [
         ]
     },
     {
-        id: 11,
+        id: 5,
         type: 'event',
         year: '2025',
         date: '12 May, 2025',
@@ -978,17 +966,7 @@ const newsData = [
         ]
     },
     {
-        id: 10,
-        type: 'event',
-        year: '2026',
-        date: '1 June, 2026',
-        title: 'José has received two funding grants',
-        body: [
-            'José has received 50,000 SEK from the "Stiftelsen Wilhelm och Martina Lundgrens Vetenskapsfond" and 10,000 SEK from the "S.o.KG. Eliassons minnes- och tilläggsfonder" to support his research visit at TU Vienna. Congratulations José!',
-        ]
-    },
-    {
-        id: 9,
+        id: 6,
         type: 'event',
         year: '2025',
         date: '30 June, 2025',
@@ -1001,59 +979,8 @@ const newsData = [
         link: 'https://www.linkedin.com/posts/jmateosramos_ethzurich-iis-iip-activity-7346206154508632066-H2YL?utm_source=share&utm_medium=member_desktop&rcm=ACoAADLuK2UBrXe3c8dXKzZaAMf2Le_X2fYEBIM',
         sourceLabel: 'View LinkedIn Post'
     },
-    {
-        id: 8,
-        type: 'event',
-        year: '2026',
-        date: '1 September, 2026',
-        title: 'Congratulations to José Miguel Mateos Ramos for successfully defending his doctoral thesis',
-        desc: 'José Miguel Mateos Ramos successfully defended his doctoral thesis, "Machine Learning for Integrated Sensing and Communications under Modeling Mismatch". Congratulations, José!',
-        link: 'https://www.linkedin.com/posts/chalmerscomsys_congratulations-dr-jos%C3%A9-miguel-mateos-ramos-activity-7500573039244484608-Dzh5?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFOxNCcB63P7oMiMxiPvyJpxyTupPbQbSW4',
-        sourceLabel: 'View LinkedIn Post'
-    },
-    {
-        id: 7,
-        type: 'publication',
-        year: '2026',
-        date: '22 September, 2026',
-        title: 'Rick presented two papers at the European Conference on Optical Communication',
-        desc: 'Two papers were presented: one by himself and one by his student Lampros Lanaras.',
-        body: [
-            'Rick M. Butler is travelling to one of the largest conferences in the field to present works on optical fibre perturbation modelling and sensing.',
-            'His own paper: "End-to-End Modelling of Earthquake-Induced Polarisation Perturbations in Submarine Optical Fibres" was presented on Tuesday (the 22nd), and nominated for the best senior paper award.',
-            'The paper by his student Lampros Lanaras was presented one day later at the poster session!'
-        ]
-    },
-    {
-        id: 6,
-        type: 'event',
-        year: '2026',
-        date: '17 March, 2026',
-        title: 'Zicong presented a paper at the Optical Fiber Communication (OFC) Conference',
-        desc: 'Zicong presented his work - "PIDT: Physics-Informed Digital Twin for Optical Fiber Parameter Estimation".',
-        body: [
-            'Zicong Jiang gave an oral presentation on physics-informed fibre parameter estimation at one of the world’s leading Optica conferences - OFC 2026.'
-        ],
-        link: 'https://arxiv.org/abs/2601.07436',
-        sourceLabel: 'Read the Paper'
-    },
     { 
-        id: 5, 
-        type: 'event', 
-        year: '2026',
-        date: '2 March, 2026', 
-        title: 'José participated as invited speaker in the Huawei BTS innovation workshop', 
-        desc: 'José Miguel Mateos Ramos presented his work - "Machine learning for hardware-aware integrated sensing and communication". Well done!',
-        body: [
-            'José Miguel Mateos Ramos took part in the Wireless BTS Innovation Workshop organized by Huawei Sweden, bringing together leading researchers and industry experts working at the forefront of next-generation wireless technologies.',
-            'He presented his work on "Machine learning for hardware-aware integrated sensing and communication".',
-            'After his presentation, he participated in a panel discussion focused on the intersection of artificial intelligence and hardware design, engaging in forward-looking conversations on wireless infrastructure.'
-        ],
-        link: 'https://www.linkedin.com/feed/update/urn:li:activity:7435375700490149889/?originTrackingId=9elqtocgrCW26%2BBdu%2FfzFA%3D%3D',
-        sourceLabel: 'View LinkedIn Post'
-    },
-    { 
-        id: 1, 
+        id: 7, 
         type: 'event', 
         year: '2026',
         date: '29 January, 2026', 
@@ -1068,7 +995,7 @@ const newsData = [
         sourceLabel: 'View LinkedIn Post'
     },
     { 
-        id: 2, 
+        id: 8, 
         type: 'hiring', 
         year: '2026',
         date: '30 January, 2026', 
@@ -1082,6 +1009,91 @@ const newsData = [
         link: 'https://www.chalmers.se/en/about-chalmers/work-with-us/vacancies/?rmpage=job&rmjob=14548&rmlang=UK',
         sourceLabel: 'View Vacancy Page'
     },
+    { 
+        id: 9, 
+        type: 'event', 
+        year: '2026',
+        date: '2 March, 2026', 
+        title: 'José participated as invited speaker in the Huawei BTS innovation workshop', 
+        desc: 'José Miguel Mateos Ramos presented his work - "Machine learning for hardware-aware integrated sensing and communication". Well done!',
+        body: [
+            'José Miguel Mateos Ramos took part in the Wireless BTS Innovation Workshop organized by Huawei Sweden, bringing together leading researchers and industry experts working at the forefront of next-generation wireless technologies.',
+            'He presented his work on "Machine learning for hardware-aware integrated sensing and communication".',
+            'After his presentation, he participated in a panel discussion focused on the intersection of artificial intelligence and hardware design, engaging in forward-looking conversations on wireless infrastructure.'
+        ],
+        link: 'https://www.linkedin.com/feed/update/urn:li:activity:7435375700490149889/?originTrackingId=9elqtocgrCW26%2BBdu%2FfzFA%3D%3D',
+        sourceLabel: 'View LinkedIn Post'
+    },
+    {
+        id: 10,
+        type: 'event',
+        year: '2026',
+        date: '17 March, 2026',
+        title: 'Zicong presented a paper at the Optical Fiber Communication (OFC) Conference',
+        desc: 'Zicong presented his work - "PIDT: Physics-Informed Digital Twin for Optical Fiber Parameter Estimation".',
+        body: [
+            'Zicong Jiang gave an oral presentation on physics-informed fibre parameter estimation at one of the world’s leading Optica conferences - OFC 2026.'
+        ],
+        link: 'https://arxiv.org/abs/2601.07436',
+        sourceLabel: 'Read the Paper'
+    },
+    {
+        id: 11,
+        type: 'event',
+        year: '2026',
+        date: '1 June, 2026',
+        title: 'José has received two funding grants',
+        body: [
+            'José has received 50,000 SEK from the "Stiftelsen Wilhelm och Martina Lundgrens Vetenskapsfond" and 10,000 SEK from the "S.o.KG. Eliassons minnes- och tilläggsfonder" to support his research visit at TU Vienna. Congratulations José!',
+        ]
+    },
+    {
+        id: 12,
+        type: 'publication',
+        year: '2026',
+        date: '8 August, 2026',
+        title: 'A paper from José has been accepted at IEEE TWC',
+        body: [
+            'The paper entitled "Positioning via digital-twin-aided channel charting with large-scale CSI features" has been accepted in IEEE Transactions on Wireless Communications. Congratulations José!',
+        ],
+        link: 'https://research.chalmers.se/en/publication/549625',
+        sourceLabel: 'View Paper'
+    },
+    {
+        id: 13,
+        type: 'event',
+        year: '2026',
+        date: '1 September, 2026',
+        title: 'Congratulations to José Miguel Mateos Ramos for successfully defending his doctoral thesis',
+        desc: 'José Miguel Mateos Ramos successfully defended his doctoral thesis, "Machine Learning for Integrated Sensing and Communications under Modeling Mismatch". Congratulations, José!',
+        link: 'https://www.linkedin.com/posts/chalmerscomsys_congratulations-dr-jos%C3%A9-miguel-mateos-ramos-activity-7500573039244484608-Dzh5?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFOxNCcB63P7oMiMxiPvyJpxyTupPbQbSW4',
+        sourceLabel: 'View LinkedIn Post'
+    },
+    {
+        id: 14,
+        type: 'publication',
+        year: '2026',
+        date: '22 September, 2026',
+        title: 'Rick presented two papers at the European Conference on Optical Communication',
+        desc: 'Two papers were presented: one by himself and one by his student Lampros Lanaras.',
+        body: [
+            'Rick M. Butler is travelling to one of the largest conferences in the field to present works on optical fibre perturbation modelling and sensing.',
+            'His own paper: "End-to-End Modelling of Earthquake-Induced Polarisation Perturbations in Submarine Optical Fibres" was presented on Tuesday (the 22nd), and nominated for the best senior paper award.',
+            'The paper by his student Lampros Lanaras was presented one day later at the poster session!',
+        ],
+        link: 'https://arxiv.org/abs/2608.11903v1',
+        sourceLabel: 'View Paper'
+    },
+    {
+        id: 15,
+        type: 'award',
+        year: '2026',
+        date: '24 September, 2026',
+        title: 'Congratulations to Rick M. Butler for receiving an ECOC 2026 Best Senior Paper Award!',
+        desc: 'Rick M. Butler received a Best Senior Paper Award for his work "End-to-End Modelling of Earthquake-Induced Polarisation Perturbations in Submarine Optical Fibres" at the 52nd European Conference on Optical Communication.',
+        link: 'https://www.linkedin.com/posts/chalmerscomsys_ecoc2026-opticalcommunications-chalmers-activity-7509182006107303937-cVR3',
+        sourceLabel: 'View LinkedIn Post'
+    }
     // { 
     //     id: 3, 
     //     type: 'publication', 
