@@ -920,20 +920,8 @@ const newsData = [
         body: [
             'The paper entitled "Semi-Supervised End-to-End Learning for Integrated Sensing and Communications" has been accepted in IEEE International Conference on Machine Learning for Communication and Networking, which will be held in Stockholm, May 5-8, 2024. Congratulations José!',
         ],
-        links: [
-            {
-                label: 'Paper 1',
-                url: 'https://example.com/paper1'
-            },
-            {
-                label: 'Paper 2',
-                url: 'https://example.com/paper2'
-            },
-            {
-                label: 'GitHub',
-                url: 'https://github.com/example'
-            }
-        ]
+        link: 'https://research.chalmers.se/en/publication/545794',
+        sourceLabel: 'View Paper'
     },
     {
         id: 2,
