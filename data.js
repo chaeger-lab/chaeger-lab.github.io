@@ -991,7 +991,7 @@ const newsData = [
             'Following the lecture, he was promoted to Associate Professor at Chalmers University of Technology.',
             'This milestone reflects his contributions to data-driven optical communication and fiber sensing research.'
         ],
-        link: 'https://www.linkedin.com/posts/chalmersuniversity-academiccareer-promotionlecture-ugcPost-7422899621657587712-hd9z?utm_source=share&utm_medium=member_desktop&rcm=ACoAADTLmQUBTJLqTpKccR8hZARr8sZd82OhgLk'，
+        link: 'https://www.linkedin.com/posts/chalmersuniversity-academiccareer-promotionlecture-ugcPost-7422899621657587712-hd9z?utm_source=share&utm_medium=member_desktop&rcm=ACoAADTLmQUBTJLqTpKccR8hZARr8sZd82OhgLk',
         sourceLabel: 'View LinkedIn Post'
     },
     { 
