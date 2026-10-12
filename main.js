@@ -368,9 +368,8 @@ function openNewsModal(news) {
     const date = document.getElementById('news-modal-date');
     const type = document.getElementById('news-modal-type');
     const body = document.getElementById('news-modal-body');
-    // const link = document.getElementById('news-modal-link');
-    // const linkLabel = document.getElementById('news-modal-link-label');
-    const linksContainer = document.getElementById('news-modal-links');
+    const link = document.getElementById('news-modal-link');
+    const linkLabel = document.getElementById('news-modal-link-label');
 
     if (!modal || !news) return;
 
@@ -395,33 +394,6 @@ function openNewsModal(news) {
         link.removeAttribute('href');
         link.classList.add('hidden');
     }
-    const links = news.links || (
-        news.link
-            ? [{ url: news.link, label: news.sourceLabel }]
-            : []
-    );
-    
-    // linksContainer.innerHTML = '';
-    
-    // links.forEach(item => {
-    //     if (!item.url) return;
-    
-    //     const a = document.createElement('a');
-    //     a.href = item.url;
-    //     a.target = '_blank';
-    //     a.rel = 'noopener noreferrer';
-    //     a.className = 'inline-flex items-center justify-center gap-2 px-5 py-3 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl transition-colors';
-    
-    //     const span = document.createElement('span');
-    //     span.textContent = item.label || 'View Source';
-    
-    //     const icon = document.createElement('i');
-    //     icon.setAttribute('data-lucide', 'external-link');
-    //     icon.className = 'w-4 h-4';
-    
-    //     a.append(span, icon);
-    //     linksContainer.appendChild(a);
-    // });
 
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
