@@ -1514,7 +1514,29 @@ const talksData = {
                     url: "https://chaeger.github.io/assets/pdf/talk_bidirectional.pdf"
                 }
             ]
+        },
+        {
+            id: "invited-20",
+            year: "2025",
+            title: "Machine Learning Opportunities for Integrated Polarization Sensing and Fibre-Optic Communication",
+            date: "May 2025",
+            venue: "International AiPT Workshop: Machine Learning Meets Photonics, Birmingham, UK"
         }
+        // TEMPLATE
+        // {
+        //     id: "invited-19",
+        //     year: "2012",
+        //     title: "Bidrectional Multi-Hop Communication via Two Relays Using Nested Voronoi Codes",
+        //     authors: "xxx",
+        //     date: "May 2012",
+        //     venue: "6th IEEE Workshop on Advanced Information Processing for Wireless Communication Systems, Copenhagen",
+        //     links: [
+        //         {
+        //             label: "Slides",
+        //             url: "https://chaeger.github.io/assets/pdf/talk_bidirectional.pdf"
+        //         }
+        //     ]
+        // }
     ],
     other: [
         {

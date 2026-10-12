@@ -890,7 +890,8 @@ function renderTalks(containerId, btnId) {
 
         el.className = `text-slate-700 leading-relaxed ${isHidden ? 'hidden-item' : ''}`;
         el.innerHTML = `
-            ${index + 1}. <span class="font-bold text-slate-900">"${talk.title},"</span>
+            // ${index + 1}. <span class="font-bold text-slate-900">"${talk.title},"</span>
+            ${index + 1}. ${talk.authors || 'Christian Häger'}, <span class="font-bold text-slate-900">"${talk.title},"</span>
             <span class="text-sm font-semibold uppercase tracking-wide text-emerald-700">${talk.categoryLabel}</span>,
             <span class="italic text-slate-600">${talk.venue}</span>,
             ${talk.date || talk.year}.
