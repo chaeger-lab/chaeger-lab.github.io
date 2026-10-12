@@ -992,7 +992,7 @@ const newsData = [
             'This milestone reflects his contributions to data-driven optical communication and fiber sensing research.'
         ],
         link: 'https://www.linkedin.com/posts/chalmersuniversity-academiccareer-promotionlecture-ugcPost-7422899621657587712-hd9z?utm_source=share&utm_medium=member_desktop&rcm=ACoAADTLmQUBTJLqTpKccR8hZARr8sZd82OhgLk', 'https://zicongjiang.github.io/zicong-jiang/'
-        sourceLabel: 'View LinkedIn Post'
+        sourceLabel: 'View LinkedIn Post', 'Test'
     },
     { 
         id: 8, 
