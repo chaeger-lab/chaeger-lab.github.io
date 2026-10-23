@@ -1101,29 +1101,29 @@ const newsData = [
         desc: 'Rick M. Butler received a Best Senior Paper Award for his work "End-to-End Modelling of Earthquake-Induced Polarisation Perturbations in Submarine Optical Fibres" at the 52nd European Conference on Optical Communication.',
         link: 'https://www.linkedin.com/posts/chalmerscomsys_ecoc2026-opticalcommunications-chalmers-activity-7509182006107303937-cVR3',
         sourceLabel: 'View LinkedIn Post'
-    },
-    { 
-        id: 16, 
-        type: 'event', 
-        year: '2026',
-        date: '24 October, 2026',
-        title: 'Template', 
-        desc: 'xxx.',
-        body: [
-            'Write the full text here.',
-            'You can add one or more paragraphs depending on how much context you want to show in the modal.'
-        ],
-        links: [
-        {
-            label: 'View Paper',
-            url: 'https://research.chalmers.se/publication'
-        },
-        {
-            label: 'View Slides',
-            url: 'https://example.com/slides.pdf'
-        }
-    ]
     }
+    // { 
+    //     id: 16, 
+    //     type: 'event', 
+    //     year: '2026',
+    //     date: '24 October, 2026',
+    //     title: 'Template', 
+    //     desc: 'xxx.',
+    //     body: [
+    //         'Write the full text here.',
+    //         'You can add one or more paragraphs depending on how much context you want to show in the modal.'
+    //     ],
+    //     links: [
+    //     {
+    //         label: 'View Paper',
+    //         url: 'https://research.chalmers.se/publication'
+    //     },
+    //     {
+    //         label: 'View Slides',
+    //         url: 'https://example.com/slides.pdf'
+    //     }
+    // ]
+    // }
     // { 
     //     id: 3, 
     //     type: 'publication', 
