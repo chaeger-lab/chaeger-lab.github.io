@@ -1169,9 +1169,10 @@ const thesisProjectsData = {
     available: [
         // Example only: replace the title and homepage URL with a real project.
         {
-            title: "Example Thesis Project",
+            title: "Project1",
             thesisLink: "https://annonsportal.chalmers.se/"
         },
+        
     ],
     past: [
             {
