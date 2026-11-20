@@ -516,6 +516,39 @@ function renderNews() {
 }
 
 // E. Thesis Projects
+function renderAvailableThesisProjects() {
+    const container = document.getElementById('available-thesis-container');
+    if (!container) return;
+
+    container.replaceChildren();
+    const projects = Array.isArray(thesisProjectsData.available) ? thesisProjectsData.available : [];
+
+    projects.forEach(project => {
+        if (typeof project?.title !== 'string' || !project.title.trim()) return;
+        if (typeof project.thesisLink !== 'string') return;
+
+        let url;
+        try {
+            url = new URL(project.thesisLink);
+        } catch {
+            return;
+        }
+        if (url.protocol !== 'https:' && url.protocol !== 'http:') return;
+
+        const item = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = url.href;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.className = 'block rounded-xl border border-slate-200 px-5 py-4 font-semibold text-blue-600 hover:bg-blue-50 hover:text-blue-800 transition-colors break-words focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600';
+        link.textContent = project.title.trim();
+        item.appendChild(link);
+        container.appendChild(item);
+    });
+
+    container.classList.toggle('hidden', container.children.length === 0);
+}
+
 function getSupervisorNames(supervisors) {
     if (!Array.isArray(supervisors) || supervisors.length === 0) {
         return 'To be updated';
@@ -621,6 +654,8 @@ function renderPastThesisProjects(containerId, items, emptyMessage) {
 
 function renderThesisProjects() {
     if (typeof thesisProjectsData === 'undefined') return;
+
+    renderAvailableThesisProjects();
 
     renderPastThesisProjects(
         'past-thesis-container',

@@ -8,6 +8,26 @@ Website
 ---
 ## Contents Editing
 You can modify contents in `data.js` file.
+### Manage Available Thesis Projects
+
+Find `thesisProjectsData.available` in `data.js`. Each project needs only two fields:
+
+```javascript
+{
+    title: "Project title",
+    thesisLink: "PASTE_CHALMERS_PORTAL_DETAIL_URL_HERE"
+},
+```
+
+Replace the placeholder with the full URL of the project's detail page on the Chalmers Thesis Portal. The example entry in `data.js` links to the portal homepage; replace its title and URL when a real project is available.
+
+- Add an object to display a project; separate objects with commas.
+- Edit `title` to rename it or `thesisLink` to change its destination.
+- Delete the entire object to remove it; reorder objects to change the display order.
+- Titles open the linked detail page in a new tab. No local project details are needed.
+- An empty `available: []` hides the list and keeps the general portal button. Entries without a title or a valid HTTP(S) URL are skipped.
+- Continue managing previous thesis work separately in `thesisProjectsData.past`.
+
 ### Add Your Research Topic
 You can add description of your current research topic under 
 ```

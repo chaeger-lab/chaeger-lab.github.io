@@ -1163,6 +1163,16 @@ const newsData = [
 
 // --- 6. THESIS PROJECTS ---
 const thesisProjectsData = {
+    // Add one object per project, in the order you want it displayed.
+    // Use the project's detail-page URL from the Chalmers Thesis Portal.
+    // Remove the entire object to remove a project. An empty array hides the list.
+    available: [
+        // Example only: replace the title and homepage URL with a real project.
+        {
+            title: "Example Thesis Project",
+            thesisLink: "https://annonsportal.chalmers.se/"
+        },
+    ],
     past: [
             {
             id: "past-1",
