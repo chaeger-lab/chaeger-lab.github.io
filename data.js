@@ -1161,78 +1161,8 @@ const newsData = [
     // }
 ];
 
-// --- 6. JOBS, INTERNSHIPS & THESIS PROJECTS ---
+// --- 6. THESIS PROJECTS ---
 const thesisProjectsData = {
-    available: [
-        {
-            id: "thesis-1",
-            type: "Bachelor / Master Thesis",
-            status: "available",
-            year: "2026",
-            title: "Physics-Informed Machine Learning for Optical Fiber Channel Modeling",
-            term: "Flexible start in 2026",
-            location: "Chalmers",
-            description: "Optical fiber communication systems form the backbone of modern digital infrastructure, enabling global Internet connectivity with ultra-high bandwidth and low latency. An accurate fiber channel model plays a critical role in optimizing transmission performance, as it enables the development of advanced receivers, analysis of signal distortions, signal shaping and coding design, and reliable system performance prediction. The nonlinear Schrödinger equation (NLSE) serves as the fundamental mathematical model for describing optical signal propagation in fibers. However, the NLSE is a nonlinear partial differential equation that lacks an analytical solution except for a few specific cases. Traditional numerical methods such as the split-step Fourier method (SSFM), have been widely used to obtain approximate solutions. While these methods are physically accurate, they are computationally expensive and limited in scalability for real-time applications. Recent advances in physics-informed machine learning offer new opportunities for efficient and physically consistent optical fiber modeling. By embedding physical laws (such as the NLSE) directly into the learning process through a customized loss, models such as physics-informed neural networks (PINNs) or physics-informed neural operators (PINO) can learn to approximate fiber channel behavior and perform fast inference without requiring large datasets [1,2]. In this project, we will explore how recent physics-informed machine learning methods can be utilized for fiber channel modeling together and evaluate their performance.
-                         "**Requirements:**\n" +
-                         "- Basic knowledge of telecommunications.\n" +
-                         "- Programming experience in Python or MATLAB.\n" +
-                         "- Interest in optical fiber communications and numerical optimization.\n" +
-                         "- Prior experience with optical communication systems is a plus, but not required.",",
-            references: [
-                {
-                    label: "Song, Yuchen, et al. Physics-informed neural operator-based full wavefield back-propagation for multi-span optical transmission. Optical Fiber Communication Conference. Optica Publishing Group, 2023.",
-                    url: "https://opg.optica.org/abstract.cfm?uri=OFC-2023-M2F.5"
-                },
-                {
-                    label: "Wang, Sifan, et al. Fundiff: Diffusion models over function spaces for physics-informed generative modeling. arXiv preprint arXiv:2506.07902 (2025).",
-                    url: "https://arxiv.org/abs/2506.07902"
-                },
-
-            ],
-            supervisors: [
-                {
-                    name: "Zicong Jiang",
-                    role: "PhD Student",
-                }
-            ],
-            contact: {
-                name: "Zicong Jiang",
-                email: "zicongj@chalmers.se",
-                note: "Please send your CV, transcript, and a short summary of your interests."
-            }
-        },
-        {
-            id: "thesis-2",
-            type: "Bachelor / Master Thesis",
-            status: "available",
-            year: "2026",
-            title: "Robust Fiber-Longitudinal Power Profile Estimation under Chromatic Dispersion Uncertainty",
-            term: "Flexible start in 2026",
-            location: "Chalmers",
-        
-            description: "Monitoring the longitudinal optical power evolution along a fiber link is an important capability for optical network diagnostics, fault localization, and performance monitoring. Recently, linear least-squares methods based on first-order regular perturbation, such as LLS-RP1, have been proposed to estimate the fiber-longitudinal power profile directly from transmitted and received optical signals. These methods provide an attractive alternative to computationally intensive optimization-based approaches because the power profile can be obtained through a closed-form linear least-squares solution. However, their performance relies on an accurate knowledge of the linear fiber propagation model, in particular the chromatic dispersion (CD) parameter.\n\nIn practical systems, the dispersion parameter used by the receiver may deviate from its true value due to parameter uncertainty, calibration errors, or imperfect knowledge of the transmission link. Such a mismatch introduces an error in the reconstructed zeroth-order propagated signal. Consequently, the residual signal used to estimate the first-order nonlinear perturbation no longer contains only the nonlinear contribution, which can lead to a biased longitudinal power profile estimate.\n\nIn this project, we will investigate a robust extension of LLS-RP1 that jointly estimates the chromatic dispersion parameter and the fiber-longitudinal power profile. A key idea is to exploit the separable structure of the estimation problem using variable projection. For a given dispersion parameter, the longitudinal power profile can still be obtained analytically through linear least squares. The linear variables can therefore be eliminated from the optimization, reducing the original joint estimation problem to a low-dimensional nonlinear optimization over the dispersion parameter. After estimating the dispersion, the longitudinal power profile can be recalculated using the corresponding least-squares solution.\n\nThe project will study suitable objective functions and optimization algorithms for this variable-projection formulation and evaluate the robustness of the proposed method under different levels of CD mismatch, transmission distances, launch powers, noise levels, and spatial resolutions. The method will first be evaluated through numerical simulations and, depending on project progress, further validated using experimental coherent optical transmission data. The final goal is to understand whether joint dispersion and power-profile estimation can make LLS-based longitudinal monitoring more robust and practical for real optical fiber systems.",
-        
-            references: [
-                {
-                    label: "Takeo Sasai et al. Linear least squares estimation of fiber-longitudinal optical power profile. Journal of Lightwave Technology, 42(6), 1955–1965, 2024.",
-                    url: "https://ieeexplore.ieee.org/document/10297545"
-                }
-            ],
-        
-            supervisors: [
-                {
-                    name: "Zicong Jiang",
-                    role: "PhD Student",
-                }
-            ],
-        
-            contact: {
-                name: "Zicong Jiang",
-                email: "zicongj@chalmers.se",
-                note: "Please send your CV, transcript, and a short summary of your interests."
-            }
-        }
-    ],
     past: [
             {
             id: "past-1",

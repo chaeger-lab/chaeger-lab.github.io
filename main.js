@@ -234,10 +234,8 @@ function renderAlumni() {
 
 // D. News & Home News
 const expandedNewsYears = new Set();
-const expandedAvailableProjectYears = new Set();
 const expandedPastProjectYears = new Set();
 let hasInitializedNewsYears = false;
-let hasInitializedAvailableProjectYears = false;
 
 function extractYearLabel(rawValue, fallbackLabel) {
     if (!rawValue) return fallbackLabel;
@@ -517,45 +515,7 @@ function renderNews() {
     if (typeof lucide !== 'undefined') lucide.createIcons();
 }
 
-// E. Jobs & Thesis Projects
-function renderSupervisorList(supervisors) {
-    if (!Array.isArray(supervisors) || supervisors.length === 0) {
-        return `<p class="text-sm text-slate-500">Supervisor information will be updated soon.</p>`;
-    }
-
-    return supervisors.map(supervisor => `
-        <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
-            <p class="font-semibold text-slate-900">${supervisor.name || 'Supervisor name'}</p>
-            <p class="text-sm text-slate-500 mb-2">${supervisor.role || 'Role to be updated'}</p>
-            ${supervisor.email ? `<a href="mailto:${supervisor.email}" class="inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 break-all"><i data-lucide="mail" class="w-4 h-4"></i><span>${supervisor.email}</span></a>` : ''}
-        </div>
-    `).join('');
-}
-
-function renderReferenceList(references) {
-    if (!Array.isArray(references) || references.length === 0) {
-        return `<p class="text-sm text-slate-500">References will be shared during the discussion.</p>`;
-    }
-
-    return references.map(reference => {
-        if (reference.url) {
-            return `
-                <a href="${reference.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-start gap-2 text-sm text-blue-600 hover:text-blue-800">
-                    <i data-lucide="arrow-up-right" class="w-4 h-4 mt-0.5 shrink-0"></i>
-                    <span>${reference.label}</span>
-                </a>
-            `;
-        }
-
-        return `
-            <div class="inline-flex items-start gap-2 text-sm text-slate-600">
-                <i data-lucide="file-text" class="w-4 h-4 mt-0.5 shrink-0"></i>
-                <span>${reference.label}</span>
-            </div>
-        `;
-    }).join('');
-}
-
+// E. Thesis Projects
 function getSupervisorNames(supervisors) {
     if (!Array.isArray(supervisors) || supervisors.length === 0) {
         return 'To be updated';
@@ -567,136 +527,14 @@ function getSupervisorNames(supervisors) {
         .join(', ');
 }
 
-function getAvailableProjectYear(project) {
-    return extractYearLabel(project.year || project.term, 'Upcoming');
-}
-
-function getCurrentCalendarYear() {
-    return String(new Date().getFullYear());
-}
-
 function getPastProjectYear(project) {
     return extractYearLabel(project.year, 'Archived');
-}
-
-function openThesisModal(project) {
-    const modal = document.getElementById('thesis-modal');
-    if (!modal || !project) return;
-
-    document.getElementById('thesis-modal-type').textContent = project.type || 'Thesis Project';
-    document.getElementById('thesis-modal-year').textContent = getAvailableProjectYear(project);
-    document.getElementById('thesis-modal-title').textContent = project.title || 'Project title';
-    document.getElementById('thesis-modal-term').textContent = project.term || 'Start date to be discussed';
-    document.getElementById('thesis-modal-location').textContent = project.location || 'Location to be updated';
-    document.getElementById('thesis-modal-description').textContent = project.description || 'Project description will be updated soon.';
-    document.getElementById('thesis-modal-supervisors').innerHTML = renderSupervisorList(project.supervisors);
-    document.getElementById('thesis-modal-references').innerHTML = renderReferenceList(project.references);
-
-    const contactContainer = document.getElementById('thesis-modal-contact');
-    if (project.contact?.email) {
-        contactContainer.innerHTML = `
-            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p class="text-xs font-bold uppercase tracking-wide text-slate-400 mb-2">Contact</p>
-                <p class="font-semibold text-slate-900">${project.contact.name || 'Contact person'}</p>
-                <a href="mailto:${project.contact.email}" class="inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 mt-2 break-all">
-                    <i data-lucide="mail" class="w-4 h-4"></i>
-                    <span>${project.contact.email}</span>
-                </a>
-                ${project.contact.note ? `<p class="text-sm text-slate-600 leading-relaxed mt-3">${project.contact.note}</p>` : ''}
-            </div>
-        `;
-    } else {
-        contactContainer.innerHTML = '';
-    }
-
-    modal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-
-    if (typeof lucide !== 'undefined') lucide.createIcons();
-}
-
-function closeThesisModal() {
-    const modal = document.getElementById('thesis-modal');
-    if (!modal) return;
-
-    modal.classList.add('hidden');
-    document.body.style.overflow = '';
-}
-
-function handleThesisModalBackdrop(event) {
-    if (event.target === event.currentTarget) {
-        closeThesisModal();
-    }
-}
-
-function createAvailableThesisProjectListItem(project) {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'w-full flex items-start justify-between gap-4 px-6 py-4 text-left hover:bg-slate-50 transition-colors group';
-    button.onclick = () => openThesisModal(project);
-    button.innerHTML = `
-        <div class="min-w-0">
-            <h4 class="font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">${project.title || 'Project title'}</h4>
-            <div class="flex flex-wrap gap-2 mt-3">
-                <span class="text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide bg-blue-100 text-blue-700">${project.type || 'Thesis Project'}</span>
-                <span class="text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide bg-emerald-100 text-emerald-700">${project.status || 'available'}</span>
-            </div>
-        </div>
-        <i data-lucide="arrow-right" class="w-4 h-4 text-slate-300 group-hover:text-blue-500 transition-colors shrink-0 mt-1"></i>
-    `;
-    return button;
-}
-
-function toggleAvailableProjectYear(year) {
-    if (expandedAvailableProjectYears.has(year)) expandedAvailableProjectYears.delete(year);
-    else expandedAvailableProjectYears.add(year);
-    renderThesisProjects();
 }
 
 function togglePastProjectYear(year) {
     if (expandedPastProjectYears.has(year)) expandedPastProjectYears.delete(year);
     else expandedPastProjectYears.add(year);
     renderThesisProjects();
-}
-
-function renderAvailableThesisProjects(containerId, items, emptyMessage) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-
-    container.innerHTML = '';
-    const currentYear = getCurrentCalendarYear();
-    const currentYearItems = Array.isArray(items)
-        ? items.filter(project => getAvailableProjectYear(project) === currentYear)
-        : [];
-
-    if (currentYearItems.length === 0) {
-        container.innerHTML = `
-            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6 text-slate-500">
-                No available thesis projects are listed for ${currentYear} right now.
-            </div>
-        `;
-        return;
-    }
-
-    const groupedProjects = groupItemsByYear(currentYearItems, getAvailableProjectYear);
-    pruneExpandedYears(expandedAvailableProjectYears, groupedProjects);
-    if (!hasInitializedAvailableProjectYears) {
-        ensureDefaultExpandedYear(expandedAvailableProjectYears, groupedProjects);
-        hasInitializedAvailableProjectYears = true;
-    }
-
-    groupedProjects.forEach(group => {
-        container.appendChild(
-            createYearAccordionSection(
-                group.year,
-                group.items,
-                expandedAvailableProjectYears.has(group.year),
-                toggleAvailableProjectYear,
-                createAvailableThesisProjectListItem,
-                'projects'
-            )
-        );
-    });
 }
 
 function createPastThesisProjectCard(project) {
@@ -783,12 +621,6 @@ function renderPastThesisProjects(containerId, items, emptyMessage) {
 
 function renderThesisProjects() {
     if (typeof thesisProjectsData === 'undefined') return;
-
-    renderAvailableThesisProjects(
-        'available-thesis-container',
-        thesisProjectsData.available,
-        'No available thesis projects are listed right now.'
-    );
 
     renderPastThesisProjects(
         'past-thesis-container',
@@ -961,7 +793,6 @@ document.addEventListener('keydown', (e) => {
         closeLightbox();
         closeResearchModal();
         closeNewsModal();
-        closeThesisModal();
     }
 });
 

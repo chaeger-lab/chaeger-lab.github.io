@@ -34,7 +34,7 @@
                 <button onclick="switchTab('people')" class="nav-link text-sm font-bold uppercase tracking-wider border-b-2 border-transparent hover:text-blue-600 transition-all" data-target="people">People</button>
                 <button onclick="switchTab('publications')" class="nav-link text-sm font-bold uppercase tracking-wider border-b-2 border-transparent hover:text-blue-600 transition-all" data-target="publications">Publications</button>
                 <button onclick="switchTab('news')" class="nav-link text-sm font-bold uppercase tracking-wider border-b-2 border-transparent hover:text-blue-600 transition-all" data-target="news">News</button>
-                <button onclick="switchTab('jobs')" class="nav-link text-sm font-bold uppercase tracking-wider border-b-2 border-transparent hover:text-blue-600 transition-all" data-target="jobs">Available Projects</button>
+                <button onclick="switchTab('jobs')" class="nav-link text-sm font-bold uppercase tracking-wider border-b-2 border-transparent hover:text-blue-600 transition-all" data-target="jobs">Thesis Projects</button>
                 <button onclick="switchTab('gallery')" class="nav-link text-sm font-bold uppercase tracking-wider border-b-2 border-transparent hover:text-blue-600 transition-all" data-target="gallery">Gallery</button>
             </div>
             <button onclick="toggleMobileMenu()" class="md:hidden focus:outline-none"><i data-lucide="menu"></i></button>
@@ -45,7 +45,7 @@
                 <button onclick="switchTab('research'); toggleMobileMenu()" class="text-left font-bold">Research</button>
                 <button onclick="switchTab('publications'); toggleMobileMenu()" class="text-left font-bold">Publications</button>
                 <button onclick="switchTab('news'); toggleMobileMenu()" class="text-left font-bold">News</button>
-                <button onclick="switchTab('jobs'); toggleMobileMenu()" class="text-left font-bold">Jobs</button>
+                <button onclick="switchTab('jobs'); toggleMobileMenu()" class="text-left font-bold">Thesis Projects</button>
             </div>
         </div>
     </nav>
@@ -171,32 +171,20 @@
             </div>
         </section>
 
-        <!-- 6. JOBS -->
+        <!-- 6. THESIS PROJECTS -->
         <section id="jobs" class="tab-content pt-32 pb-20 bg-white min-h-screen">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="mb-14 border-l-4 border-blue-600 pl-6 max-w-4xl">
-                    <h2 class="text-4xl font-bold text-slate-900 mb-3">Thesis Projects & Internships</h2>
-                    <p class="text-lg text-slate-500 mb-3">Mainly thesis opportunities for students interested in machine learning, wireless/optical communications, and joint sensing.</p>
-                    <p class="text-slate-600 leading-relaxed">
-                        This page highlights currently available projects and selected past projects. If you do not see a perfect match, you are still welcome to contact the lab to discuss a custom thesis idea.
-                    </p>
+                    <h2 class="text-4xl font-bold text-slate-900 mb-3">Thesis Projects</h2>
+                    <p class="text-lg text-slate-500">Explore thesis opportunities in machine learning, wireless and optical communications, and joint sensing.</p>
                 </div>
 
                 <div class="mb-12">
-                    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-6">
-                        <div>
-                            <h3 class="text-2xl font-bold text-slate-900">Available Projects</h3>
-                            <p class="text-slate-500">Only projects for the current calendar year are shown here. Click a title to open the full project details.</p>
-                        </div>
-                    </div>
-                    <div id="available-thesis-container" class="space-y-8"></div>
-                </div>
-
-                <div class="rounded-3xl border border-dashed border-slate-300 bg-slate-50 p-6 md:p-8 mb-12">
-                    <p class="font-semibold text-slate-800 mb-2">Do you have your own idea?</p>
-                    <p class="text-sm leading-relaxed text-slate-600">
-                        We are open to discussing custom thesis directions if your background overlaps with communication systems, machine learning, signal processing, photonics, or sensing.
-                    </p>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-3">Available Projects</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6">Please visit the Chalmers Thesis Portal for currently available thesis projects.</p>
+                    <a href="https://annonsportal.chalmers.se/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600">
+                        Browse the Chalmers Thesis Portal
+                    </a>
                 </div>
 
                 <div>
@@ -278,44 +266,6 @@
                     </a> -->
                     <div id="news-modal-links" class="flex flex-wrap gap-3"></div>
                     <button onclick="closeNewsModal()" class="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-colors">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- THESIS MODAL -->
-    <div id="thesis-modal" class="fixed inset-0 z-[100] bg-slate-900/95 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-300 overflow-y-auto" onclick="handleThesisModalBackdrop(event)">
-        <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[85vh] relative overflow-hidden shadow-2xl animate-fade-in my-8 flex flex-col">
-            <button class="absolute top-4 right-4 z-10 bg-slate-900/10 hover:bg-slate-900/20 text-slate-700 rounded-full p-2 transition-colors" onclick="closeThesisModal()"><i data-lucide="x" class="w-6 h-6"></i></button>
-            <div class="p-8 md:p-10 border-b border-slate-100 bg-gradient-to-br from-white via-slate-50 to-emerald-50">
-                <div class="flex flex-wrap items-center gap-3 mb-4">
-                    <span id="thesis-modal-type" class="text-[11px] font-bold px-3 py-1 rounded-full uppercase bg-blue-100 text-blue-700"></span>
-                    <span id="thesis-modal-year" class="text-[11px] font-bold px-3 py-1 rounded-full uppercase bg-emerald-100 text-emerald-700"></span>
-                </div>
-                <h2 id="thesis-modal-title" class="text-3xl md:text-4xl font-bold text-slate-900 leading-tight"></h2>
-                <div class="flex flex-wrap gap-4 text-sm text-slate-500 mt-5">
-                    <div class="inline-flex items-center gap-2"><i data-lucide="calendar-range" class="w-4 h-4"></i><span id="thesis-modal-term"></span></div>
-                    <div class="inline-flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4"></i><span id="thesis-modal-location"></span></div>
-                </div>
-            </div>
-            <div class="p-8 md:p-10 overflow-y-auto">
-                <div class="mb-8">
-                    <h3 class="text-sm font-bold uppercase tracking-wide text-slate-400 mb-3">Description</h3>
-                    <p id="thesis-modal-description" class="text-slate-700 leading-relaxed"></p>
-                </div>
-                <div class="grid gap-8 md:grid-cols-2">
-                    <div>
-                        <h3 class="text-sm font-bold uppercase tracking-wide text-slate-400 mb-3">Supervisors</h3>
-                        <div id="thesis-modal-supervisors" class="space-y-3"></div>
-                    </div>
-                    <div>
-                        <h3 class="text-sm font-bold uppercase tracking-wide text-slate-400 mb-3">References</h3>
-                        <div id="thesis-modal-references" class="space-y-3"></div>
-                    </div>
-                </div>
-                <div id="thesis-modal-contact" class="mt-8"></div>
-                <div class="mt-8 pt-6 border-t border-slate-100 flex justify-end">
-                    <button onclick="closeThesisModal()" class="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-colors">Close</button>
                 </div>
             </div>
         </div>
